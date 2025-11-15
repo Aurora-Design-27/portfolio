@@ -1,0 +1,853 @@
+/* RESET BASE */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* HEADER */
+.hero {
+    width: 100%;
+    height: 500px;
+    background-image: url('img_/img1.png');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative; /* serve per posizionare il testo sopra */
+}
+
+.header-top {
+    position: absolute; /* sopra la hero */
+    top: 20px;          /* distanza dal bordo superiore */
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between; /* sinistra-destra */
+    padding: 0 40px;   /* margine dai lati */
+    z-index: 10;
+}
+
+.header-top span {
+    color: white;
+    font-size: 18px;
+}
+
+.header-top nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+/* FASCIA 1 */
+.hero {
+    width: 100%;
+    height: 500px;
+    background-image: url('img_/img1.png'); /* sfondo completo */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+.hero-text {
+    grid-column: 8 / span 4; /* parte dalla colonna 8 */
+    text-align: left; /* bandiera a sinistra */
+    color: #fff;
+}
+
+.hero-text .subtitle {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 24px;
+    margin: 0;
+}
+
+.hero-text .title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    margin: 5px 0;
+}
+
+.hero-text .description {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+.seconda-fascia {
+    width: 100%;
+    height: 500px;
+    background-color: #FE4967;
+    display: flex;
+    align-items: center; /* centra verticalmente */
+}
+
+.seconda-fascia .container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* sinistra-destra */
+    align-items: center;
+}
+
+.colonna-sinistra {
+    flex: 1; /* prende spazio disponibile a sinistra */
+}
+
+.colonna-destra {
+    display: flex;
+    flex: 1; /* prende spazio a destra */
+    justify-content: flex-end; /* immagini allineate a destra */
+}
+
+.seconda-titolo {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 64px;
+    color: white;
+    line-height: 1.1;
+}
+
+.immagini-scrapbook {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    height: 500px; /* più alto per sfalsare molto le immagini */
+     padding-left: 20px;   /* margine interno a sinistra */
+    padding-right: 20px;  /* margine interno a destra */
+    overflow: visible;
+}
+
+.immagini-scrapbook {
+    display: flex;
+    gap: 40px;
+    position: relative;
+    height: 500px; /* contenitore alto per sfalsarle verticalmente */
+    overflow: hidden;
+}
+
+.immagini-scrapbook img {
+    width: 180px; /* dimensioni più grandi */
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    /* Rimuoviamo l'entrata, le immagini sono già nella posizione finale */
+    animation: oscillateScrapbook 2s steps(1, end) infinite;
+}
+
+/* Sfalsamento verticale e posizioni diverse */
+.immagini-scrapbook img:nth-child(1) { margin-top: 150px; }
+.immagini-scrapbook img:nth-child(2) { margin-top: -250px; }
+.immagini-scrapbook img:nth-child(3) { margin-top: 50px; }
+
+/* Oscillazione a scatti tipo scrapbook */
+@keyframes oscillateScrapbook {
+    0%   { transform: rotate(0deg); }
+    12%  { transform: rotate(-8deg); }
+    25%  { transform: rotate(6deg); }
+    37%  { transform: rotate(-4deg); }
+    50%  { transform: rotate(0deg); }
+    62%  { transform: rotate(-5deg); }
+    75%  { transform: rotate(3deg); }
+    87%  { transform: rotate(-2deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* TERZA FASCIA */
+.terza-fascia {
+    width: 100%;
+    background-color: #FE4967; /* stesso rosa della seconda fascia */
+    padding: 0; /* rimuoviamo padding verticale per altezza fissa */
+    height: 500px; /* altezza fissa come le altre fasce */
+}
+
+.terza-fascia .container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: center;
+    height: 100%; /* container prende tutta l'altezza della fascia */
+}
+
+/* Colonna immagine: prime 6 colonne */
+.colonna-immagine {
+    grid-column: 1 / span 6;
+    height: 100%;
+}
+
+.colonna-immagine img {
+    width: 710px;  /* lunghezza 6 colonne */
+    height: 100%;  /* occupa tutta l'altezza della fascia */
+    object-fit: cover;
+    border-radius: 0; /* puoi lasciare 0 per rettangolo perfetto */
+}
+
+/* Colonna testo: colonne 8-11 */
+.colonna-testo {
+    grid-column: 8 / span 4;
+    color: white;
+    align-self: start;   /* forza la colonna a partire dall'alto */
+    padding-top: 30px;   /* regola quanto vuoi spingerlo verso il basso se necessario */
+}
+
+
+.terza-titolo {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: white; /* titolo bianco */
+}
+
+.terza-descrizione {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: white; /* testo bianco */
+}
+/* QUARTA FASCIA */
+.quarta-fascia {
+    width: 100%;
+    height: 524px;
+    background-color: #FE4967; /* stesso rosa */
+    display: flex;
+    align-items: center;
+}
+
+.quarta-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; /* distanzia i rettangoli */
+    padding-left: 60px; /* parte dalla metà della prima colonna */
+    padding-right: 60px;
+}
+
+/* Rettangoli */
+.rettangolo {
+    width: 440px;
+    height: 310px;
+    background-color: #D9405B; /* leggermente più scuro del rosa */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* bandiera a sinistra per titolo e testo */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Immagini dentro i rettangoli */
+.immagine-rettangolo {
+    width: 100%;
+    height: 100%; /* circa 60% del rettangolo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.immagine-rettangolo img {
+    max-width: 180px;
+    max-height: 180px;
+    object-fit: contain;
+    position: absolute;
+    
+}
+
+.immagine-rettangolo img:first-child {
+    transform: rotate(20deg);
+    left: 50%;
+    top: 5%;
+}
+
+.immagine-rettangolo img:nth-child(2) {
+    transform: rotate(10deg) scale(1.2);
+    left: 60%;
+    top: -5%;
+}
+
+/* Titolo e descrizione */
+.rettangolo-titolo {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 28px;
+    color: white;
+    margin-top: 10px;
+}
+
+.rettangolo-descrizione {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* Animazione scrapbook originale */
+@keyframes scrapbook-hover {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-8deg); }
+    50% { transform: rotate(6deg); }
+    75% { transform: rotate(-4deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Applica solo al passaggio del mouse */
+.rettangolo:hover .immagine-rettangolo img {
+    animation: scrapbook-hover 1s steps(1, end) infinite;
+}
+
+.quinta-fascia {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.quinta-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+/* Testo a sinistra */
+.testo-fascia {
+    grid-column: 2 / span 5; /* dalla seconda alla sesta colonna */
+    display: flex;
+    flex-direction: column;
+}
+
+.fascia-small {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.fascia-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.fascia-description {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    color: #FE4967; /* rosa precedente */
+    margin: 0;
+}
+
+/* Immagine a destra */
+.immagine-fascia {
+    grid-column: 7 / span 6; /* dalla settima alla dodicesima colonna */
+    width: 669px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.immagine-fascia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* SESTA FASCIA (specchiata rispetto alla quinta) */
+.sesta-fascia {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.sesta-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+/* Immagine a sinistra */
+.immagine-fascia-sx {
+    grid-column: 1 / span 6;  /* colonne 1-6 */
+    width: 669px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.immagine-fascia-sx img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Testo a destra */
+.testo-fascia-dx {
+    grid-column: 8 / span 5; /* colonne 8-12 */
+    display: flex;
+    flex-direction: column;
+}
+
+.testo-fascia-dx .fascia-small {
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.testo-fascia-dx .fascia-title {
+    font-size: 48px;
+    color: white;
+    margin-bottom: 10px;
+    font-family: 'Rubik Dirt', cursive;
+}
+
+.testo-fascia-dx .fascia-description {
+    font-size: 18px;
+    color: #FE4967;
+    font-family: 'Archivo Black', sans-serif;
+    line-height: 1.4;
+}
+
+
+/* SETTIMA FASCIA */
+.settima-fascia {
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    display: flex;
+    align-items: center;
+}
+
+.settima-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+/* Testo sinistra */
+.settima-fascia .testo-fascia {
+    grid-column: 2 / span 5;
+}
+
+/* Immagine destra */
+.settima-fascia .immagine-fascia {
+    grid-column: 8 / span 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* IMMAGINE RIDOTTA E NON TAGLIATA */
+/* IMMAGINE PIÙ GRANDE */
+.settima-fascia .img-animata {
+    width: auto;
+    height: 500px; /* o il valore che hai scelto */
+    border-radius: 22px;
+    object-fit: cover;
+
+    opacity: 0;
+    transform: translateY(-50px); /* leggermente più alto → più elegante */
+    transition: 
+        opacity 1.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+        transform 1.8s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.settima-fascia .img-animata.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* OTTAVA FASCIA SENZA RETTANGOLI */
+.ottava-fascia {
+    width: 100%;
+    height: 524px;
+    background-color: black; /* sfondo nero */
+    display: flex;
+    align-items: center;
+}
+
+.ottava-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 60px;
+}
+
+/* Singolo blocco */
+.box-arte {
+    width: 440px; /* come i rettangoli originali */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Immagine che occupa lo spazio del rettangolo "sparito" */
+/* IMMAGINE leggermente più piccola per bordi stondati */
+/* Contenitore dell’immagine */
+.box-img {
+    width: auto;            /* mantiene la larghezza proporzionata */
+    max-width: 100%;        /* non supera lo spazio del box */
+    height: auto;           /* mantiene proporzioni originali */
+    border-radius: 6px;     /* bordi stondati */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    display: block;
+    margin: 0 auto;         /* centra l’immagine nel box */
+}
+
+/* Animazione al passaggio del mouse */
+.box-arte:hover .box-img {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+/* Titolo sotto l’immagine */
+.box-title {
+    margin-top: 15px;
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 26px;
+    color: white; /* titolo bianco */
+}
+
+/* Descrizione rosa */
+.box-desc {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: #FEAFC1; /* rosa chiaro */
+    margin-top: 5px;
+    line-height: 1.4;
+}
+
+/* --- NONA FASCIA --- */
+.nona-fascia {
+    width: 100%;
+    height: 500px;
+    background-color: black; /* come quinta fascia */
+    display: flex;
+    align-items: center;
+}
+
+.nona-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+/* Testo a sinistra */
+.nona-fascia .testo-fascia {
+    grid-column: 2 / span 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.nona-fascia .fascia-small {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.nona-fascia .fascia-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.nona-fascia .fascia-description {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    color: #FE4967; /* rosa precedente */
+    margin: 0;
+}
+
+/* Immagine a destra */
+.nona-fascia .immagine-fascia {
+    grid-column: 7 / span 6;
+    width: 669px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nona-fascia .immagine-fascia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 22px;
+
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+        transform 0.5s ease,
+        box-shadow 0.5s ease;
+}
+
+/* Hover effetto */
+.nona-fascia .immagine-fascia img:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+/* --- DECIMA FASCIA --- */
+.decima-fascia {
+    width: 100%;
+    height: 390px;                 /* altezza definita */
+    background-color: black;       /* sfondo nero */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.contenuto-decima {
+    text-align: center;
+    opacity: 0;                    /* per animazione */
+    transform: translateY(40px);   /* testo parte leggermente in basso */
+    transition: 
+        opacity 1.3s cubic-bezier(0.16, 0.84, 0.44, 1),
+        transform 1.3s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+/* quando diventa visibile */
+.contenuto-decima.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* scritta piccola sopra */
+.decima-small {
+    width: 181px; 
+    height: 22px;
+    margin: 0 auto 12px auto;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: white;
+}
+
+/* titolo grande */
+.decima-title {
+    width: 900px;
+    height: 71px;
+    margin: 0 auto;
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    color: #FE4967;     /* rosa già usato */
+    line-height: 1;
+}
+
+/* --- UNDICESIMA FASCIA - CAROUSEL FOTO --- */
+.undicesima-fascia {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* contenitore del carousel */
+.carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* striscia immagini */
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    animation: scrollCarousel 30s linear infinite;
+}
+
+/* immagini */
+.carousel-track img {
+    width: 325px;
+    height: 272px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* hover: zoom leggero + luce */
+.carousel-track img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 70, 100, 0.4);
+}
+
+/* pausa animazione quando passi sopra */
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* Animazione scorrimento */
+@keyframes scrollCarousel {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- UNDICESIMA FASCIA - CAROUSEL FOTO --- */
+.undicesima-fascia {
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 30px;
+    animation: scrollCarousel 18s linear infinite; /* VELOCITÀ AUMENTATA */
+}
+
+.carousel-track img {
+    width: 325px;
+    height: 272px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-track img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 70, 100, 0.4);
+}
+
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+@keyframes scrollCarousel {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* --- UNDICESIMA FASCIA - DOPPIO CAROUSEL --- */
+.undicesima-fascia {
+    width: 100%;
+    height: 780px; /* molto più alta per non tagliare nulla */
+    background: black;
+    padding: 60px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 80px; /* più spazio tra le due righe */
+    overflow: visible; /* permette lo zoom senza tagli */
+}
+
+/* Righe */
+.carousel-row {
+    width: 100%;
+    overflow: visible; /* fondamentale per evitare tagli */
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 50px;
+    overflow: visible; /* evita clipping */
+    position: relative;
+}
+
+/* Immagini */
+.carousel-track img {
+    width: 325px;
+    height: 272px;
+    object-fit: cover;
+    border-radius: 25px;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+    overflow: visible;
+}
+
+/* Zoom senza tagli */
+.carousel-track img:hover {
+    transform: scale(1.18); /* più grande ma elegante */
+    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
+    z-index: 10; /* porta davanti le immagini zoomate */
+}
+
+/* Animazioni */
+.row-top .carousel-track {
+    animation: scroll-left 16s linear infinite;
+}
+
+.row-bottom .carousel-track {
+    animation: scroll-right 16s linear infinite;
+}
+
+/* Nessuna pausa al click o hover */
+.carousel-row:hover .carousel-track {
+    animation-play-state: running;
+}
+
+/* Keyframes */
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+}
