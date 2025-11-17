@@ -80,6 +80,25 @@
             </p>
         </div>
     </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const img = document.querySelector(".colonna-immagine img");
+
+    const revealImage = () => {
+        const trigger = window.innerHeight * 0.85; // quando l'immagine entra nel viewport
+        const top = img.getBoundingClientRect().top;
+
+        if (top < trigger) {
+            img.classList.add("in-view");
+        }
+    };
+
+    window.addEventListener("scroll", revealImage);
+    revealImage(); // in caso l’immagine sia già visibile all’apertura della pagina
+});
+</script>
+
 </section>
 
 <!-- QUARTA FASCIA -->
@@ -115,30 +134,32 @@
     </div>
 </section>
 
-<!-- QUINTA FASCIA -->
+<!-- ========== FASCIA 5 ========== -->
 <section class="quinta-fascia">
     <div class="container">
+        <!-- Testo a sinistra -->
         <div class="testo-fascia">
             <p class="fascia-small">alcuni miei lavori...</p>
             <h2 class="fascia-title">Cappellano <br> con Reyman</h2>
-            <p class="fascia-description">Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Maecenas quis consequat <br> dui, nec congue augue. Etiam consequat<br> maximus.</p>
+            <p class="fascia-description">
+                Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Maecenas quis consequat <br> dui, nec congue augue. Etiam consequat<br> maximus.
+            </p>
         </div>
+        <!-- Immagine a destra -->
         <div class="immagine-fascia">
-            <img src="css/img_/img3.png" alt="img3">
+            <img src="css/img_/img3.png" alt="img3" class="img-hover-effect">
         </div>
     </div>
 </section>
 
-<!-- SESTA FASCIA -->
+<!-- ========== FASCIA 6 ========== -->
 <section class="sesta-fascia">
     <div class="container">
-        
-        <!-- IMMAGINE A SINISTRA -->
+        <!-- Immagine a sinistra -->
         <div class="immagine-fascia-sx">
-            <img src="css/img_/img4.png" alt="img4">
+            <img src="css/img_/img4.png" alt="img4" class="img-hover-effect">
         </div>
-
-        <!-- TESTO A DESTRA -->
+        <!-- Testo a destra -->
         <div class="testo-fascia-dx">
             <p class="fascia-small">nuovo progetto...</p>
             <h2 class="fascia-title">IBRIDO77</h2>
@@ -147,7 +168,6 @@
                 di un’<br>identità visiva di un ex cinema di quartiere<br> per renderlo HUB sociale.
             </p>
         </div>
-
     </div>
 </section>
 
@@ -165,32 +185,16 @@
             </p>
         </div>
 
-        <!-- Immagine a destra -->
+        <!-- Immagini a destra -->
         <div class="immagine-fascia">
-            <img src="css/img_/img5.png" class="img-animata" alt="img5">
+            <img src="css/img_/img5.png" class="img-hover-effect" alt="img5">
+            <img src="css/img_/img24 2.png" class="img-hover-effect" alt="img24">
         </div>
 
     </div>
 </section>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const img = document.querySelector(".img-animata");
-
-    const revealImage = () => {
-        const trigger = window.innerHeight * 3.85;
-        const top = img.getBoundingClientRect().top;
-
-        if (top < trigger) {
-            img.classList.add("visible");
-        }
-    };
-
-    window.addEventListener("scroll", revealImage);
-    revealImage();
-});
-</script>
 
 <!-- OTTAVA FASCIA -->
 <section class="ottava-fascia">
@@ -308,6 +312,62 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 
 </section>
+
+<!-- DODICESIMA FASCIA -->
+<section class="dodicesima-fascia">
+    <div class="container">
+
+        <!-- VIDEO A SINISTRA -->
+        <div class="video-colonna">
+            <video src="css/video_/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
+            <video src="css/video_/RadunoBellaria.mov" class="video-vert" autoplay muted loop playsinline></video>
+        </div>
+
+        <!-- TESTO A DESTRA -->
+        <div class="testo-video-fascia">
+            <p class="fascia-small">VIDEOMAKING</p>
+            <h2 class="fascia-title">Video e Montaggi</h2>
+            <p class="fascia-description">
+                Mi occupo non solo di fotografia ma anche di riprese <br> video e montaggio.  
+                Ecco alcuni miei recenti lavori.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll(".video-vert");
+
+    videos.forEach(video => {
+
+        video.addEventListener("loadedmetadata", () => {
+
+            // Calcoliamo lo stop in modo sicuro
+            const duration = video.duration;
+            const cut = 15;
+            const stopTime = Math.max(0, duration - cut);
+
+            video.addEventListener("timeupdate", () => {
+
+                if (video.currentTime >= stopTime) {
+                    video.currentTime = 0;   // torna all’inizio
+                    video.play();            // riparte subito
+                }
+
+            });
+
+        });
+
+    });
+});
+
+
+</script>
+
+
 
 
 

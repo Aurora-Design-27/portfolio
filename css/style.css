@@ -41,7 +41,28 @@ body {
     text-decoration: none;
     margin-left: 20px;
     font-size: 16px;
+    position: relative;
+    transition: color 0.3s ease;
 }
+
+.header-top nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    width: 0%;
+    height: 2px;
+    background: white; /* colore neon */
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.header-top nav a:hover::after {
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 
 /* FASCIA 1 */
 .hero {
@@ -86,7 +107,22 @@ body {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
     margin: 0;
+    color: black;
 }
+
+/* FASCIÀ 1 – HERO SFUMATA VERSO LA SECONDA FASCIA */
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;          /* posiziona in fondo alla hero */
+    left: 0;
+    width: 100%;
+    height: 180px;      /* altezza della sfumatura */
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #FE4967); /* sfuma verso il rosa della seconda fascia */
+    pointer-events: none; /* non blocca il cursore */
+    z-index: 5;           /* sopra lo sfondo ma sotto eventuale testo */
+}
+
 
 .seconda-fascia {
     width: 100%;
@@ -190,11 +226,44 @@ body {
     height: 100%;
 }
 
+/* Effetto Polaroid per la colonna immagine */
 .colonna-immagine img {
-    width: 710px;  /* lunghezza 6 colonne */
-    height: 100%;  /* occupa tutta l'altezza della fascia */
+    width: 710px; 
+    height: 100%;
     object-fit: cover;
-    border-radius: 0; /* puoi lasciare 0 per rettangolo perfetto */
+    border-radius: 0;
+
+    /* Stato iniziale: fuori schermo e leggermente ruotata */
+    transform: translateX(-200px) rotate(-15deg);
+    opacity: 0;
+
+    /* Transizione fluida */
+    transition: transform 1.5s cubic-bezier(0.16, 0.84, 0.44, 1), 
+                opacity 1.5s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+/* Classe che attiva l’animazione */
+.colonna-immagine img.in-view {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+}
+
+/* Oscillazioni Polaroid */
+@keyframes oscillatePolaroid {
+    0%   { transform: translateX(0) rotate(0deg); }
+    12%  { transform: translateX(-3px) rotate(-3deg); }
+    25%  { transform: translateX(3px) rotate(2deg); }
+    37%  { transform: translateX(-2px) rotate(-1deg); }
+    50%  { transform: translateX(0) rotate(0deg); }
+    62%  { transform: translateX(-1px) rotate(-1deg); }
+    75%  { transform: translateX(1px) rotate(1deg); }
+    87%  { transform: translateX(-1px) rotate(-0.5deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+}
+
+/* Applica animazione oscillazione una volta entrata in viewport */
+.colonna-immagine img.in-view {
+    animation: oscillatePolaroid 2s steps(1, end) infinite;
 }
 
 /* Colonna testo: colonne 8-11 */
@@ -210,7 +279,7 @@ body {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
     margin-bottom: 20px;
-    color: white; /* titolo bianco */
+    color: rgb(0, 0, 0); /* titolo bianco */
 }
 
 .terza-descrizione {
@@ -285,7 +354,7 @@ body {
 .rettangolo-titolo {
     font-family: 'Rubik Dirt', cursive;
     font-size: 28px;
-    color: white;
+    color: rgb(0, 0, 0);
     margin-top: 10px;
 }
 
@@ -311,6 +380,7 @@ body {
     animation: scrapbook-hover 1s steps(1, end) infinite;
 }
 
+/* ========== FASCIA 5 ========== */
 .quinta-fascia {
     width: 100%;
     height: 500px;
@@ -331,8 +401,8 @@ body {
 }
 
 /* Testo a sinistra */
-.testo-fascia {
-    grid-column: 2 / span 5; /* dalla seconda alla sesta colonna */
+.quinta-fascia .testo-fascia {
+    grid-column: 2 / span 5;
     display: flex;
     flex-direction: column;
 }
@@ -354,27 +424,37 @@ body {
 .fascia-description {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
-    color: #FE4967; /* rosa precedente */
+    color: #FE4967;
     margin: 0;
 }
 
-/* Immagine a destra */
-.immagine-fascia {
-    grid-column: 7 / span 6; /* dalla settima alla dodicesima colonna */
-    width: 669px;
-    height: 400px;
+/* Immagini a destra */
+.quinta-fascia .immagine-fascia {
+    grid-column: 7 / span 6;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;        /* distanza tra immagini se ce ne sono più di una */
+    overflow: visible; /* permette ingrandimento hover */
 }
 
-.immagine-fascia img {
-    width: 100%;
+.img-hover-effect {
+    width: auto;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 22px;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+    z-index: 1;
 }
 
-/* SESTA FASCIA (specchiata rispetto alla quinta) */
+.img-hover-effect:hover {
+    transform: scale(1.04);
+    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
+    z-index: 10;
+}
+
+/* ========== FASCIA 6 ========== */
 .sesta-fascia {
     width: 100%;
     height: 500px;
@@ -395,49 +475,37 @@ body {
 }
 
 /* Immagine a sinistra */
-.immagine-fascia-sx {
-    grid-column: 1 / span 6;  /* colonne 1-6 */
-    width: 669px;
-    height: 400px;
+.sesta-fascia .immagine-fascia-sx {
+    grid-column: 1 / span 6;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    overflow: visible;
 }
 
-.immagine-fascia-sx img {
-    width: 100%;
+.sesta-fascia .immagine-fascia-sx img {
+    width: auto;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 22px;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.sesta-fascia .immagine-fascia-sx img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
+    z-index: 10;
 }
 
 /* Testo a destra */
-.testo-fascia-dx {
-    grid-column: 8 / span 5; /* colonne 8-12 */
+.sesta-fascia .testo-fascia-dx {
+    grid-column: 8 / span 5;
     display: flex;
     flex-direction: column;
 }
-
-.testo-fascia-dx .fascia-small {
-    font-size: 16px;
-    color: white;
-    margin-bottom: 10px;
-    font-family: 'Archivo Black', sans-serif;
-}
-
-.testo-fascia-dx .fascia-title {
-    font-size: 48px;
-    color: white;
-    margin-bottom: 10px;
-    font-family: 'Rubik Dirt', cursive;
-}
-
-.testo-fascia-dx .fascia-description {
-    font-size: 18px;
-    color: #FE4967;
-    font-family: 'Archivo Black', sans-serif;
-    line-height: 1.4;
-}
-
 
 /* SETTIMA FASCIA */
 .settima-fascia {
@@ -459,38 +527,63 @@ body {
     align-items: center;
 }
 
-/* Testo sinistra */
+/* Testo a sinistra */
 .settima-fascia .testo-fascia {
     grid-column: 2 / span 5;
+    display: flex;
+    flex-direction: column;
 }
 
-/* Immagine destra */
+.fascia-small {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.fascia-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    color: white;
+    margin: 0 0 10px 0;
+}
+
+.fascia-description {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    color: #FE4967;
+    margin: 0;
+}
+
+/* Contenitore immagini a destra */
 .settima-fascia .immagine-fascia {
     grid-column: 8 / span 4;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
 }
 
-/* IMMAGINE RIDOTTA E NON TAGLIATA */
-/* IMMAGINE PIÙ GRANDE */
-.settima-fascia .img-animata {
-    width: auto;
-    height: 500px; /* o il valore che hai scelto */
+/* Manteniamo dimensioni originali delle immagini */
+.settima-fascia .immagine-fascia img {
+    width: auto;       /* dimensioni originali */
+    height: 500px;     /* altezza originale */
     border-radius: 22px;
     object-fit: cover;
-
-    opacity: 0;
-    transform: translateY(-50px); /* leggermente più alto → più elegante */
-    transition: 
-        opacity 1.8s cubic-bezier(0.16, 0.84, 0.44, 1),
-        transform 1.8s cubic-bezier(0.16, 0.84, 0.44, 1);
-}
-
-.settima-fascia .img-animata.visible {
     opacity: 1;
     transform: translateY(0);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
 }
+
+/* Hover leggero senza esagerare */
+.settima-fascia .immagine-fascia img:hover {
+    transform: scale(1.15);  /* si allarga leggermente */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+}
+
+
+
 
 
 /* OTTAVA FASCIA SENZA RETTANGOLI */
@@ -679,134 +772,35 @@ body {
     line-height: 1;
 }
 
-/* --- UNDICESIMA FASCIA - CAROUSEL FOTO --- */
+/* ========== UNDICESIMA FASCIA - DOPPIO CAROUSEL ========== */
 .undicesima-fascia {
     width: 100%;
-    height: 300px;
+    max-width: 1440px; /* limite massimo */
+    margin: 0 auto;
+    height: 780px; /* più alta per evitare tagli */
     background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    position: relative;
-}
-
-/* contenitore del carousel */
-.carousel {
-    width: 100%;
-    overflow: hidden;
-}
-
-/* striscia immagini */
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scrollCarousel 30s linear infinite;
-}
-
-/* immagini */
-.carousel-track img {
-    width: 325px;
-    height: 272px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* hover: zoom leggero + luce */
-.carousel-track img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(255, 70, 100, 0.4);
-}
-
-/* pausa animazione quando passi sopra */
-.carousel:hover .carousel-track {
-    animation-play-state: paused;
-}
-
-/* Animazione scorrimento */
-@keyframes scrollCarousel {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* --- UNDICESIMA FASCIA - CAROUSEL FOTO --- */
-.undicesima-fascia {
-    width: 100%;
-    height: 300px;
-    background-color: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.carousel {
-    width: 100%;
-    overflow: hidden;
-}
-
-.carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scrollCarousel 18s linear infinite; /* VELOCITÀ AUMENTATA */
-}
-
-.carousel-track img {
-    width: 325px;
-    height: 272px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.carousel-track img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(255, 70, 100, 0.4);
-}
-
-.carousel:hover .carousel-track {
-    animation-play-state: paused;
-}
-
-@keyframes scrollCarousel {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-/* --- UNDICESIMA FASCIA - DOPPIO CAROUSEL --- */
-.undicesima-fascia {
-    width: 100%;
-    height: 780px; /* molto più alta per non tagliare nulla */
-    background: black;
     padding: 60px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 80px; /* più spazio tra le due righe */
-    overflow: visible; /* permette lo zoom senza tagli */
+    gap: 80px; /* distanza tra le due righe */
+    overflow: hidden; /* evita scroll orizzontale */
 }
 
-/* Righe */
+/* Singola riga carousel */
 .carousel-row {
     width: 100%;
-    overflow: visible; /* fondamentale per evitare tagli */
+    overflow: visible; /* permette zoom senza taglio */
     position: relative;
 }
 
+/* Track immagini */
 .carousel-track {
     display: flex;
     gap: 50px;
-    overflow: visible; /* evita clipping */
     position: relative;
+    width: fit-content; /* adatta la larghezza alle immagini */
+    overflow: visible;  /* permette alle immagini di crescere senza tagli */
 }
 
 /* Immagini */
@@ -817,31 +811,26 @@ body {
     border-radius: 25px;
     transition: transform 0.45s ease, box-shadow 0.45s ease;
     cursor: pointer;
-    overflow: visible;
+    z-index: 1;
 }
 
-/* Zoom senza tagli */
+/* Hover: zoom e luce */
 .carousel-track img:hover {
-    transform: scale(1.18); /* più grande ma elegante */
+    transform: scale(1.18); /* ingrandimento elegante */
     box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
-    z-index: 10; /* porta davanti le immagini zoomate */
+    z-index: 10; /* sopra le altre immagini */
 }
 
-/* Animazioni */
+/* Animazioni scorrimento */
 .row-top .carousel-track {
-    animation: scroll-left 16s linear infinite;
+    animation: scroll-left 30s linear infinite; /* rallentato da 16s a 30s */
 }
 
 .row-bottom .carousel-track {
-    animation: scroll-right 16s linear infinite;
+    animation: scroll-right 30s linear infinite; /* rallentato */
 }
 
-/* Nessuna pausa al click o hover */
-.carousel-row:hover .carousel-track {
-    animation-play-state: running;
-}
-
-/* Keyframes */
+/* Keyframes scorrimento */
 @keyframes scroll-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -851,3 +840,139 @@ body {
     from { transform: translateX(-50%); }
     to { transform: translateX(0); }
 }
+
+/* Evita pausa al passaggio del mouse */
+.carousel-row:hover .carousel-track {
+    animation-play-state: running;
+}
+
+
+/* ========== DODICESIMA FASCIA - correggi dimensioni video + testo a destra ========== */
+.dodicesima-fascia {
+    width: 100%;
+    height: 500px;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.dodicesima-fascia .container {
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+    height: 100%;
+    align-items: center;
+}
+
+/* VIDEO A SINISTRA (colonne 1 - 6) */
+.video-colonna {
+    grid-column: 1 / span 6;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    justify-content: center; /* centra i video nella colonna */
+    padding-left: 24px;
+    padding-right: 12px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden; /* impedisce overflow orizzontale */
+}
+
+/* ogni video prende al massimo metà della colonna e non supera l'altezza */
+.video-vert {
+    display: block;
+    max-height: 92%;        /* non supera l'altezza della fascia */
+    max-width: 48%;         /* occupa al massimo metà della colonna video */
+    width: auto;
+    object-fit: contain;    /* mostra il video intero, senza crop */
+    border-radius: 12px;
+    background: #000;
+    transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+/* Hover elegante ma non eccessivo */
+.video-vert:hover {
+    transform: scale(1.03);
+    filter: brightness(1.06);
+    box-shadow: 0 18px 45px rgba(0,0,0,0.55);
+}
+
+/* OVERLAY leggeri — lascio come li avevi */
+.overlay-dark {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.overlay-fade {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* TESTO A DESTRA (colonne 8 - 12) */
+.testo-video-fascia {
+    grid-column: 8 / span 5;
+    z-index: 4;
+    text-align: left;
+    padding-right: 48px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* tipografia */
+.testo-video-fascia .fascia-small {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    margin: 0 0 8px 0;
+}
+
+.testo-video-fascia .fascia-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 48px;
+    color: #FE4967;
+    margin: 0 0 12px 0;
+    line-height: 1;
+}
+
+.testo-video-fascia .fascia-description {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    opacity: 0.95;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* RESPONSIVE: sotto 1100px mettiamo i video sopra e testo sotto */
+@media (max-width: 1100px) {
+    .dodicesima-fascia { height: auto; padding: 28px 0; }
+    .dodicesima-fascia .container { grid-template-columns: 1fr; row-gap: 18px; }
+    .video-colonna { grid-column: 1 / -1; flex-direction: row; justify-content: center; padding: 0 24px; gap: 12px; }
+    .video-vert { max-width: 46%; max-height: 55vh; }
+    .testo-video-fascia { grid-column: 1 / -1; padding: 0 24px; text-align: center; }
+    .testo-video-fascia .fascia-title { font-size: 40px; }
+}
+
+/* MOBILE stretto: video in colonna */
+@media (max-width: 600px) {
+    .video-colonna { flex-direction: column; gap: 12px; }
+    .video-vert { max-width: 100%; max-height: 45vh; width: auto; }
+    .testo-video-fascia .fascia-title { font-size: 28px; }
+}
+
+
+
