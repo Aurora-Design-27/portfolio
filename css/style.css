@@ -107,7 +107,7 @@ body {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
     margin: 0;
-    color: black;
+    color: white;
 }
 
 /* FASCIÀ 1 – HERO SFUMATA VERSO LA SECONDA FASCIA */
@@ -269,7 +269,7 @@ body {
 /* Colonna testo: colonne 8-11 */
 .colonna-testo {
     grid-column: 8 / span 4;
-    color: white;
+    color: black;
     align-self: start;   /* forza la colonna a partire dall'alto */
     padding-top: 30px;   /* regola quanto vuoi spingerlo verso il basso se necessario */
 }
@@ -286,7 +286,7 @@ body {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: white; /* testo bianco */
+    color:black; /* testo bianco */
 }
 /* QUARTA FASCIA */
 .quarta-fascia {
@@ -361,7 +361,7 @@ body {
 .rettangolo-descrizione {
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
-    color: white;
+    color: black;
     margin-top: 5px;
     line-height: 1.4;
 }
@@ -410,14 +410,14 @@ body {
 .fascia-small {
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
-    color: white;
+    color: black;
     margin: 0 0 10px 0;
 }
 
 .fascia-title {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
-    color: white;
+    color: #FE4967;
     margin: 0 0 10px 0;
 }
 
@@ -544,14 +544,14 @@ body {
 .fascia-title {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
-    color: white;
+    color: #FE4967;
     margin: 0 0 10px 0;
 }
 
 .fascia-description {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
-    color: #FE4967;
+    color: white;
     margin: 0;
 }
 
@@ -637,14 +637,14 @@ body {
     margin-top: 15px;
     font-family: 'Rubik Dirt', cursive;
     font-size: 26px;
-    color: white; /* titolo bianco */
+    color: #FE4967; /* titolo bianco */
 }
 
 /* Descrizione rosa */
 .box-desc {
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
-    color: #FEAFC1; /* rosa chiaro */
+    color: white; /* rosa chiaro */
     margin-top: 5px;
     line-height: 1.4;
 }
@@ -686,14 +686,14 @@ body {
 .nona-fascia .fascia-title {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
-    color: white;
+    color: #FE4967;
     margin: 0 0 10px 0;
 }
 
 .nona-fascia .fascia-description {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
-    color: #FE4967; /* rosa precedente */
+    color: white; /* rosa precedente */
     margin: 0;
 }
 

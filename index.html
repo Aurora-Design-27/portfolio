@@ -9,19 +9,6 @@
 </head>
 <body>
 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="header-top">
-            <span>Hello, nice to meet you!</span>
-            <nav>
-                <a href="#">creazioni</a>
-                <a href="#">story</a>
-                <a href="#">chisono</a>
-                <a href="#">contatti</a>
-            </nav>
-        </div>
-    </header>
-
 <!-- FASCIA 1 -->
 <section class="hero">
     <div class="header-top">
@@ -320,7 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- VIDEO A SINISTRA -->
         <div class="video-colonna">
             <video src="css/video_/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
-            <video src="css/video_/RadunoBellaria.mov" class="video-vert" autoplay muted loop playsinline></video>
+            <video src="css/video_/Raduno.mp4" class="video-vert" autoplay muted loop playsinline></video>
         </div>
 
         <!-- TESTO A DESTRA -->
@@ -345,11 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         video.addEventListener("loadedmetadata", () => {
 
-            // Calcoliamo lo stop in modo sicuro
-            const duration = video.duration;
-            const cut = 15;
-            const stopTime = Math.max(0, duration - cut);
-
+         
             video.addEventListener("timeupdate", () => {
 
                 if (video.currentTime >= stopTime) {
@@ -363,6 +346,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 });
+
+
+<!-- TREDICESIMA FASCIA -->
+<section class="tredicesima-fascia">
+    <div class="center-img-wrapper">
+        alt="img23" class="center-img">
+    </div>
+</section>
+
+
+
 
 
 </script>
