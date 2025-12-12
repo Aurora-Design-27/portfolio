@@ -237,6 +237,14 @@ body {
     margin-top: 120px;
 }
 
+/* VERSIONE MOBILE */
+@media (max-width: 768px) {
+  .hero-text.title {
+    font-size: 38px; /* dimensione mobile */
+  }
+}
+
+
 .hero-text .subtitle {
     font-family: 'Archivo Black', sans-serif;
     font-size: 24px;
@@ -285,29 +293,37 @@ body {
     flex-wrap: wrap;
 }
 
+
+
 .immagini-scrapbook img {
     width: 180px;
     height: auto;
     object-fit: contain;
     position: relative;
     animation: oscillateScrapbook 2s steps(1, end) infinite;
+
+    /* NUOVO: aggiungiamo una variabile per la rotazione */
+    --rot: 0deg; 
+    transform: rotate(var(--rot)); /* applica rotazione tramite variabile */
 }
+
 
 .immagini-scrapbook img:nth-child(1) { margin-top: 100px; }
 .immagini-scrapbook img:nth-child(2) { margin-top: -200px; }
 .immagini-scrapbook img:nth-child(3) { margin-top: 0px; }
 
 @keyframes oscillateScrapbook {
-    0%   { transform: rotate(0deg); }
-    12%  { transform: rotate(-8deg); }
-    25%  { transform: rotate(6deg); }
-    37%  { transform: rotate(-4deg); }
-    50%  { transform: rotate(0deg); }
-    62%  { transform: rotate(-5deg); }
-    75%  { transform: rotate(3deg); }
-    87%  { transform: rotate(-2deg); }
-    100% { transform: rotate(0deg); }
+    0%   { --rot: 0deg; }
+    12%  { --rot: -8deg; }
+    25%  { --rot: 6deg; }
+    37%  { --rot: -4deg; }
+    50%  { --rot: 0deg; }
+    62%  { --rot: -5deg; }
+    75%  { --rot: 3deg; }
+    87%  { --rot: -2deg; }
+    100% { --rot: 0deg; }
 }
+
 
 /* ============================================
    TERZA FASCIA - ABOUT ME
@@ -372,7 +388,7 @@ body {
 .terza-descrizione {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
-    line-height: 1.6;
+    line-height: 1.2;
     color: black;
 }
 
@@ -468,6 +484,23 @@ body {
 .rettangolo:hover .immagine-rettangolo img {
     animation: scrapbook-hover 1s steps(1, end) infinite;
 }
+
+/* MOBILE - 768px e inferiore */
+@media (max-width: 768px) {
+    .quarta-fascia .rettangolo .immagine-rettangolo img {
+        max-width: 60%; /* riduci le dimensioni */
+        margin-left: 10%; /* sposta leggermente a sinistra */
+    }
+}
+
+/* SMALL MOBILE - 480px e inferiore */
+@media (max-width: 480px) {
+    .quarta-fascia .rettangolo .immagine-rettangolo img {
+        max-width: 50%; /* ancora più piccole */
+        margin-left: 15%;
+    }
+}
+
 /* ============================================
    QUINTA FASCIA - CAPPELLANDO
    ============================================ */
@@ -580,6 +613,18 @@ body {
     box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
 }
 
+/* Mobile */
+@media (max-width: 768px) {
+    .sesta-fascia .fascia-title {
+        font-size: 40px; /* dimensione solo su mobile */
+    }
+
+    .sesta-fascia .fascia-description {
+        font-size: 15px; /* dimensione solo su mobile */
+    }
+
+}
+
 /* ============================================
    FASCIA GALLERY - IBRIDO77
    ============================================ */
@@ -671,18 +716,36 @@ body {
 }
 
 /* Responsive */
+/* MOBILE & TABLET - fino a 768px */
 @media (max-width: 768px) {
+
+    .fascia6-gallery {
+        padding: 20px 10px;
+    }
+
     .container-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* forza due colonne */
+        gap: 15px;
+        max-width: 100%;
+        margin: 0 auto;
+        justify-items: center;
+        position: relative;
     }
 
     .container-gallery img {
-        max-width: 150px;
+        width: 100%;       /* prende tutta la larghezza della cella */
+        height: auto;      /* mantiene proporzioni */
+        aspect-ratio: 1;   /* mantiene il quadrato */
+        object-fit: cover;
+        border-radius: 10px;
     }
 
     .circle-checkbox {
         width: 45px;
         height: 45px;
+        top: 50%;
+        left: 50%;
     }
 
     .inner-squares {
@@ -690,7 +753,13 @@ body {
         height: 20px;
         gap: 3px;
     }
+
+    .img-hover-effect:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
+    }
 }
+
 
 
 
@@ -701,7 +770,7 @@ body {
     width: 100%;
     min-height: 550px;
     background-color: #000000;
-    padding: 60px 40px;
+    padding: auto;
     display: flex;
     align-items: center;
 }
@@ -720,10 +789,14 @@ body {
     border-radius: 15px;
 }
 
-/* Media query per schermi fino a 768px */
+/* Responsive */
 @media (max-width: 768px) {
-    .settima-fascia {
-        padding: 60px 60px; /* aumenta il padding laterale su mobile */
+    .settima-fascia .fascia-title {
+        font-size: 40px;
+    }
+
+    .settima-fascia .fascia-description {
+        font-size: 15px;
     }
 }
 
@@ -800,6 +873,17 @@ body {
     max-width: 600px; 
     height: auto;
     border-radius: 15px; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nona-fascia .fascia-title {
+        font-size: 40px;
+    }
+
+    .nona-fascia .fascia-description {
+        font-size: 15px;
+    }
 }
 
 
@@ -910,39 +994,75 @@ body {
     to { transform: translateX(0); }
 }
 
-/* ============================================
-   DODICESIMA FASCIA - VIDEO
-   ============================================ */
+@media (max-width: 768px) {
+
+    .undicesima-fascia {
+        min-height: auto; /* riduce l’altezza se vuoi */
+        padding: 40px 0;
+        gap: 40px;
+    }
+
+    .carousel-track img {
+        width: 8000px; /* doppia dimensione desktop */
+        height: auto; /* mantiene proporzioni */
+        border-radius: 25px; /* puoi anche ridurre se vuoi */
+    }
+
+    .carousel-track {
+        gap: 30px; /* distanza tra le immagini più piccola per adattarsi allo schermo */
+    }
+
+   
+    .undicesima-fascia {
+        padding: 30px 0;  /* riduce lo spazio sopra e sotto */
+        gap: 40px;        /* riduce lo spazio tra titolo e caroselli */
+    }
+}
+
+
+
+
+
+/* ===============================
+   DODICESIMA FASCIA
+   =============================== */
 .dodicesima-fascia {
     width: 100%;
     min-height: 500px;
     background: #000;
-    position: relative;
-    overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 60px 40px;
+    justify-content: flex-start;
+    padding: auto;
+    padding-bottom: 70px;
 }
 
+/* Testo centrale */
+.testo-centrale {
+    text-align: center;
+    margin-bottom: 40px; /* distanza dai video */
+}
+
+/* Video colonna */
 .video-colonna {
     display: flex;
+    flex-direction: row;
     gap: 18px;
-    align-items: center;
     justify-content: center;
-    height: 100%;
+    align-items: center;
     flex-wrap: wrap;
 }
 
+/* Video */
 .video-vert {
-    display: block;
-    max-height: 450px;
-    width: auto;
-    max-width: 48%;
-    object-fit: contain;
+    width: 100%;
+    max-width: 325px;
+    height: auto;
     border-radius: 12px;
-    background: #000;
-    transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
+    object-fit: contain;
     box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+    transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
 }
 
 .video-vert:hover {
@@ -951,34 +1071,54 @@ body {
     box-shadow: 0 18px 45px rgba(0,0,0,0.55);
 }
 
-.testo-video-fascia {
-    padding: 30px;
-    text-align: left;
+/* ===============================
+   MEDIA QUERY MOBILE/TABLET
+   =============================== */
+@media (max-width: 768px) {
+    .dodicesima-fascia {
+        padding: 20px 10px;
+        min-height: auto;
+    }
+
+    /* Video colonna verticale */
+    .video-colonna {
+        flex-direction: column;
+        gap: 100px;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .video-vert {
+        width: 95%;
+        max-width: 400px;
+        height: auto;
+        max-height: none;
+        border-radius: 12px; /* mantieni bordi stondati */
+    }
+
+    /* Testo sopra i video */
+    .testo-centrale {
+        margin-bottom: 30px; /* spazio tra testo e video */
+        text-align: center;
+    }
+
+     /* Titolo e sottotitolo della dodicesima fascia */
+    .dodicesima-fascia .fascia-title {
+        font-size: 40px;   /* titolo */
+    }
+
+    .dodicesima-fascia .fascia-small {
+        font-size: 15px;   /* sottotitolo */
+    }
+
+    /* Spazio tra dodicesima fascia e quella successiva */
+    .dodicesima-fascia {
+        padding-bottom: 40px;  /* distanza dalla fascia successiva */
+    }
 }
 
-.testo-video-fascia .fascia-small {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    margin: 0 0 8px 0;
-}
 
-.testo-video-fascia .fascia-title {
-    font-family: 'Rubik Dirt', cursive;
-    font-size: 48px;
-    color: #FE4967;
-    margin: 0 0 12px 0;
-    line-height: 1;
-}
 
-.testo-video-fascia .fascia-description {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
-    color: #fff;
-    opacity: 0.95;
-    margin: 0;
-    line-height: 1.4;
-}
 
 
 
@@ -1167,6 +1307,8 @@ body {
     .immagini-scrapbook {
         justify-content: center;
         min-height: 300px;
+        flex-direction: column; /* verticale */
+        align-items: center;
     }
     
     .immagini-scrapbook img {
@@ -1176,8 +1318,23 @@ body {
     .immagini-scrapbook img:nth-child(1),
     .immagini-scrapbook img:nth-child(2),
     .immagini-scrapbook img:nth-child(3) {
-        margin-top: 0;
+        margin-top: 10px;
     }
+
+   .immagini-scrapbook img:nth-child(1) {
+        transform: translateX(-15px); 
+    }
+
+    .immagini-scrapbook img:nth-child(2) {
+        transform: translateX(15px);
+    }
+
+    .immagini-scrapbook img:nth-child(3) {
+        transform: translateX(-20px);
+    }
+
+
+
     
     .terza-titolo,
     .fascia-title {
@@ -1186,7 +1343,7 @@ body {
     
     .terza-descrizione,
     .fascia-description {
-        font-size: 16px;
+        font-size: 25px;
     }
     
     .rettangolo {
@@ -1198,10 +1355,7 @@ body {
         height: 210px;
     }
     
-    .video-vert {
-        max-width: 100%;
-        max-height: 350px;
-    }
+    
     
     .tredicesima-title {
         font-size: 40px;
@@ -1263,19 +1417,37 @@ body {
     }
     
     .seconda-titolo {
-        font-size: 36px;
+        font-size: 45px;
     }
     
     .immagini-scrapbook {
-        flex-direction: column;
-        gap: 20px;
-        min-height: auto;
+        display: flex;
+        flex-direction: column; /* verticali */
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
     }
-    
+
     .immagini-scrapbook img {
-        width: 120px;
+        width: 160px; /* dimensione mobile */
     }
-    
+
+    /* SFALSAMENTO con translateX + rotazione variabile */
+    .immagini-scrapbook img:nth-child(1) {
+        transform: translateX(80px) rotate(var(--rot));
+        margin-top: 20px;
+    }
+
+    .immagini-scrapbook img:nth-child(2) {
+        transform: translateX(-90px) rotate(var(--rot));
+        margin-top: 5px;
+    }
+
+    .immagini-scrapbook img:nth-child(3) {
+        transform: translateX(50px) rotate(var(--rot));
+        margin-top: 6px;
+    }
+
     .colonna-immagine img {
         max-width: 100%;
     }
@@ -1285,11 +1457,22 @@ body {
         font-size: 32px;
     }
     
+    .quinta-fascia
+    .fascia-title {
+        font-size: 40px;
+    }   
+
+    .quinta-fascia
+    .fascia-description {
+        font-size: 15px;
+    }   
+
     .terza-descrizione,
     .fascia-description {
         font-size: 14px;
     }
     
+
     .rettangolo-titolo {
         font-size: 28px;
     }
@@ -1315,20 +1498,14 @@ body {
         gap: 30px;
     }
     
-    .carousel-track img {
-        width: 200px;
-        height: 170px;
-    }
+
     
     .video-colonna {
         flex-direction: column;
         gap: 15px;
     }
     
-    .video-vert {
-        max-width: 100%;
-        max-height: 300px;
-    }
+   
     
     .tredicesima-title {
         font-size: 32px;
@@ -1372,7 +1549,7 @@ body {
     }
     
     .seconda-titolo {
-        font-size: 28px;
+        font-size: 40px;
     }
     
     .terza-titolo,
@@ -1388,8 +1565,5 @@ body {
         font-size: 24px;
     }
     
-    .carousel-track img {
-        width: 150px;
-        height: 130px;
-    }
+   
 }
