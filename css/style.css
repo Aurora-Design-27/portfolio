@@ -324,6 +324,19 @@ body {
     100% { --rot: 0deg; }
 }
 
+@media (max-width: 768px) {
+    .immagini-scrapbook img {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .immagini-scrapbook img.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* ============================================
    TERZA FASCIA - ABOUT ME
@@ -489,15 +502,15 @@ body {
 @media (max-width: 768px) {
     .quarta-fascia .rettangolo .immagine-rettangolo img {
         max-width: 60%; /* riduci le dimensioni */
-        margin-left: 10%; /* sposta leggermente a sinistra */
+        margin-left: 30%; /* sposta leggermente a sinistra */
     }
 }
 
 /* SMALL MOBILE - 480px e inferiore */
 @media (max-width: 480px) {
     .quarta-fascia .rettangolo .immagine-rettangolo img {
-        max-width: 50%; /* ancora più piccole */
-        margin-left: 15%;
+        max-width: 60%; /* ancora più piccole */
+        margin-left: 30%;
     }
 }
 
@@ -780,13 +793,46 @@ body {
     gap: 50px;
     flex-wrap: wrap;
     justify-content: center;
+    perspective: 1000px; /* Prospettiva 3D */
 }
 
-.settima-fascia .immagine-fascia img {
+/* Contenitore della carta */
+.card-container {
+    position: relative;
     width: 100%;
     max-width: 300px;
-    height: auto;
+    height: 410px;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+/* Flip della carta quando ha la classe attiva */
+.card-container.flipped {
+    transform: rotateY(180deg);
+}
+
+/* Fronte e retro della carta */
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
     border-radius: 15px;
+    overflow: hidden;
+}
+
+.card-front img,
+.card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Il retro parte girato */
+.card-back {
+    transform: rotateY(180deg);
 }
 
 /* Responsive */
@@ -794,12 +840,13 @@ body {
     .settima-fascia .fascia-title {
         font-size: 40px;
     }
-
     .settima-fascia .fascia-description {
         font-size: 15px;
     }
+    .card-container {
+        height: 420px;
+    }
 }
-
 
 /* ============================================
    OTTAVA FASCIA - OPERE D'ARTE
@@ -1035,6 +1082,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding: auto;
+    text-align: center;
     padding-bottom: 70px;
 }
 

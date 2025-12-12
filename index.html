@@ -71,9 +71,9 @@
             </div>
             <div class="col-12 col-lg-6">
                 <div class="immagini-scrapbook">
-                    <img src="img/lettera.png" alt="lettera">
-                    <img src="img/fotografia.png" alt="fotografia">
-                    <img src="img/pennello 2.png" alt="pennello 2">
+                    <img class="fade-in" src="img/lettera.png" alt="lettera">
+                    <img class="fade-in" src="img/fotografia.png" alt="fotografia">
+                    <img class="fade-in" src="img/pennello 2.png" alt="pennello 2">
                 </div>
             </div>
         </div>
@@ -230,8 +230,14 @@
             </div>
             <div class="col-12 col-lg-6">
                 <div class="immagine-fascia">
-                    <img src="img/img5.png" class="img-hover-effect" alt="Album cover 1">
-                    <img src="img/img24 2.png" class="img-hover-effect" alt="Album cover 2">
+                    <div class="card-container">
+                        <div class="card-front">
+                            <img src="img/img5.png" alt="Album cover front">
+                        </div>
+                        <div class="card-back">
+                            <img src="img/img24 2.png" alt="Album cover back">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -351,7 +357,7 @@
                 <h2 class="fascia-title">Video e Montaggi</h2>
                 <p class="fascia-description">
                     Mi occupo non solo di fotografia ma anche di riprese 
-                    video e montaggio. Ecco alcuni miei recenti lavori.
+                    video e montaggio. <br> Ecco alcuni miei recenti lavori.
                 </p>
             </div>
         </div>
@@ -534,8 +540,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+const fadeEls = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.3 });
+
+fadeEls.forEach(el => observer.observe(el));
 
 
+
+
+    // Effetto flip carta allo scroll
+    const cardContainer = document.querySelector('.card-container');
+    const settimaFascia = document.querySelector('.settima-fascia');
+
+    window.addEventListener('scroll', () => {
+        if (cardContainer && settimaFascia) {
+            const fasciaTop = settimaFascia.offsetTop;
+            const fasciaHeight = settimaFascia.offsetHeight;
+            const scrollPos = window.scrollY + window.innerHeight / 2;
+            
+            // Calcola la posizione relativa dello scroll nella fascia
+            const relativeScroll = (scrollPos - fasciaTop) / fasciaHeight;
+            
+            // Flip quando si è a metà della fascia
+            if (relativeScroll > 0.6 && relativeScroll < 1.2) {
+                cardContainer.classList.add('flipped');
+            } else {
+                cardContainer.classList.remove('flipped');
+            }
+        }
+    });
+</script>
 
 
 
