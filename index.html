@@ -569,7 +569,7 @@ fadeEls.forEach(el => observer.observe(el));
             const relativeScroll = (scrollPos - fasciaTop) / fasciaHeight;
             
             // Flip quando si è a metà della fascia
-            if (relativeScroll > 0.6 && relativeScroll < 1.2) {
+            if (relativeScroll > 0.5 && relativeScroll < 1.2) {
                 cardContainer.classList.add('flipped');
             } else {
                 cardContainer.classList.remove('flipped');
