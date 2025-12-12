@@ -1,4 +1,6 @@
-/* RESET BASE */
+/* ============================================
+   RESET & BASE
+   ============================================ */
 * {
     margin: 0;
     padding: 0;
@@ -7,88 +9,232 @@
 
 body {
     font-family: 'Archivo Black', sans-serif;
+    overflow-x: hidden;
 }
 
-/* HEADER */
+/* ============================================
+   HERO SECTION
+   ============================================ */
 .hero {
     width: 100%;
-    height: 500px;
-    background-image: url('img_/img1.png');
+    min-height: 500px;
+    height: 70vh;
+    background-image: url('../img/img1.png');
     background-size: cover;
-    background-position: top center;
+    background-position: center;
     background-repeat: no-repeat;
-    position: relative; /* serve per posizionare il testo sopra */
+    position: relative;
 }
 
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), #FE4967);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* ============================================
+   HEADER / NAVIGATION
+   ============================================ */
 .header-top {
-    position: absolute; /* sopra la hero */
-    top: 20px;          /* distanza dal bordo superiore */
+    position: absolute;
+    top: 20px;
     left: 0;
     right: 0;
     display: flex;
-    justify-content: space-between; /* sinistra-destra */
-    padding: 0 40px;   /* margine dai lati */
-    z-index: 10;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    z-index: 100;
 }
 
-.header-top span {
+.hero-left {
     color: white;
     font-size: 18px;
+    font-family: 'Archivo Black', sans-serif;
 }
 
-.header-top nav a {
+/* MENU DESKTOP */
+.desktop-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.desktop-nav a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 16px;
+    font-family: 'Archivo Black', sans-serif;
     position: relative;
     transition: color 0.3s ease;
 }
 
-.header-top nav a::after {
+.desktop-nav a::after {
     content: '';
     position: absolute;
     bottom: -4px;
     left: 50%;
     width: 0%;
     height: 2px;
-    background: white; /* colore neon */
+    background: white;
     transition: all 0.4s ease;
     transform: translateX(-50%);
 }
 
-.header-top nav a:hover::after {
+.desktop-nav a:hover::after {
     width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-
-/* FASCIA 1 */
-.hero {
-    width: 100%;
-    height: 500px;
-    background-image: url('img_/img1.png'); /* sfondo completo */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    
+/* HAMBURGER BUTTON */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+    position: relative;
 }
 
-.container {
-    max-width: 1440px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
+.hamburger-line {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* MENU MOBILE OVERLAY */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 350px;
+    height: 100vh;
+    background: linear-gradient(135deg, #FE4967 0%, #D9405B 100%);
+    z-index: 1000;
+    transition: right 0.4s cubic-bezier(0.16, 0.84, 0.44, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.mobile-menu.active {
+    right: 0;
+}
+
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
     align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
 }
 
+.close-menu span {
+    color: white;
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 300;
+}
+
+.close-menu:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.mobile-menu-list {
+    list-style: none;
+    padding: 100px 40px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.mobile-menu-list li {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: all 0.4s ease;
+}
+
+.mobile-menu.active .mobile-menu-list li {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.mobile-menu.active .mobile-menu-list li:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active .mobile-menu-list li:nth-child(2) { transition-delay: 0.2s; }
+.mobile-menu.active .mobile-menu-list li:nth-child(3) { transition-delay: 0.3s; }
+
+.mobile-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 28px;
+    display: block;
+    padding: 10px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.mobile-link::before {
+    content: '';
+    position: absolute;
+    left: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 3px;
+    background: white;
+    transition: width 0.3s ease;
+}
+
+.mobile-link:hover {
+    padding-left: 20px;
+}
+
+.mobile-link:hover::before {
+    width: 30px;
+}
+
+/* ============================================
+   HERO TEXT
+   ============================================ */
 .hero-text {
-    grid-column: 8 / span 4; /* parte dalla colonna 8 */
-    text-align: left; /* bandiera a sinistra */
+    text-align: left;
     color: #fff;
+    padding: 20px;
+    margin-top: 120px;
 }
 
 .hero-text .subtitle {
@@ -109,45 +255,16 @@ body {
     margin: 0;
     color: white;
 }
-
-/* FASCIÀ 1 – HERO SFUMATA VERSO LA SECONDA FASCIA */
-.hero::after {
-    content: "";
-    position: absolute;
-    bottom: 0;          /* posiziona in fondo alla hero */
-    left: 0;
-    width: 100%;
-    height: 180px;      /* altezza della sfumatura */
-    background: linear-gradient(to bottom, rgba(0,0,0,0), #FE4967); /* sfuma verso il rosa della seconda fascia */
-    pointer-events: none; /* non blocca il cursore */
-    z-index: 5;           /* sopra lo sfondo ma sotto eventuale testo */
-}
-
-
+/* ============================================
+   SECONDA FASCIA - TRA ARTE, DESIGN E FOTOGRAFIA
+   ============================================ */
 .seconda-fascia {
     width: 100%;
-    height: 500px;
+    min-height: 500px;
     background-color: #FE4967;
     display: flex;
-    align-items: center; /* centra verticalmente */
-}
-
-.seconda-fascia .container {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between; /* sinistra-destra */
     align-items: center;
-}
-
-.colonna-sinistra {
-    flex: 1; /* prende spazio disponibile a sinistra */
-}
-
-.colonna-destra {
-    display: flex;
-    flex: 1; /* prende spazio a destra */
-    justify-content: flex-end; /* immagini allineate a destra */
+    padding: 60px 40px;
 }
 
 .seconda-titolo {
@@ -155,41 +272,31 @@ body {
     font-size: 64px;
     color: white;
     line-height: 1.1;
-}
-
-.immagini-scrapbook {
-    display: flex;
-    gap: 30px;
-    position: relative;
-    height: 500px; /* più alto per sfalsare molto le immagini */
-     padding-left: 20px;   /* margine interno a sinistra */
-    padding-right: 20px;  /* margine interno a destra */
-    overflow: visible;
+    padding: 20px;
 }
 
 .immagini-scrapbook {
     display: flex;
     gap: 40px;
     position: relative;
-    height: 500px; /* contenitore alto per sfalsarle verticalmente */
-    overflow: hidden;
+    min-height: 400px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .immagini-scrapbook img {
-    width: 180px; /* dimensioni più grandi */
+    width: 180px;
     height: auto;
     object-fit: contain;
     position: relative;
-    /* Rimuoviamo l'entrata, le immagini sono già nella posizione finale */
     animation: oscillateScrapbook 2s steps(1, end) infinite;
 }
 
-/* Sfalsamento verticale e posizioni diverse */
-.immagini-scrapbook img:nth-child(1) { margin-top: 150px; }
-.immagini-scrapbook img:nth-child(2) { margin-top: -250px; }
-.immagini-scrapbook img:nth-child(3) { margin-top: 50px; }
+.immagini-scrapbook img:nth-child(1) { margin-top: 100px; }
+.immagini-scrapbook img:nth-child(2) { margin-top: -200px; }
+.immagini-scrapbook img:nth-child(3) { margin-top: 0px; }
 
-/* Oscillazione a scatti tipo scrapbook */
 @keyframes oscillateScrapbook {
     0%   { transform: rotate(0deg); }
     12%  { transform: rotate(-8deg); }
@@ -202,53 +309,42 @@ body {
     100% { transform: rotate(0deg); }
 }
 
-/* TERZA FASCIA */
+/* ============================================
+   TERZA FASCIA - ABOUT ME
+   ============================================ */
 .terza-fascia {
     width: 100%;
-    background-color: #FE4967; /* stesso rosa della seconda fascia */
-    padding: 0; /* rimuoviamo padding verticale per altezza fissa */
-    height: 500px; /* altezza fissa come le altre fasce */
+    background-color: #FE4967;
+    padding: 60px 0;
+    min-height: 500px;
 }
 
-.terza-fascia .container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    max-width: 1440px;
-    margin: 0 auto;
-    align-items: center;
-    height: 100%; /* container prende tutta l'altezza della fascia */
-}
-
-/* Colonna immagine: prime 6 colonne */
 .colonna-immagine {
-    grid-column: 1 / span 6;
+    width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Effetto Polaroid per la colonna immagine */
 .colonna-immagine img {
-    width: 710px; 
-    height: 100%;
+    width: 100%;
+    max-width: 710px;
+    height: auto;
     object-fit: cover;
     border-radius: 0;
-
-    /* Stato iniziale: fuori schermo e leggermente ruotata */
     transform: translateX(-200px) rotate(-15deg);
     opacity: 0;
-
-    /* Transizione fluida */
     transition: transform 1.5s cubic-bezier(0.16, 0.84, 0.44, 1), 
                 opacity 1.5s cubic-bezier(0.16, 0.84, 0.44, 1);
 }
 
-/* Classe che attiva l’animazione */
 .colonna-immagine img.in-view {
     transform: translateX(0) rotate(0deg);
     opacity: 1;
+    animation: oscillatePolaroid 2s steps(1, end) infinite;
 }
 
-/* Oscillazioni Polaroid */
 @keyframes oscillatePolaroid {
     0%   { transform: translateX(0) rotate(0deg); }
     12%  { transform: translateX(-3px) rotate(-3deg); }
@@ -261,69 +357,60 @@ body {
     100% { transform: translateX(0) rotate(0deg); }
 }
 
-/* Applica animazione oscillazione una volta entrata in viewport */
-.colonna-immagine img.in-view {
-    animation: oscillatePolaroid 2s steps(1, end) infinite;
-}
-
-/* Colonna testo: colonne 8-11 */
 .colonna-testo {
-    grid-column: 8 / span 4;
     color: black;
-    align-self: start;   /* forza la colonna a partire dall'alto */
-    padding-top: 30px;   /* regola quanto vuoi spingerlo verso il basso se necessario */
+    padding: 30px;
 }
-
 
 .terza-titolo {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
     margin-bottom: 20px;
-    color: rgb(0, 0, 0); /* titolo bianco */
+    color: rgb(0, 0, 0);
 }
 
 .terza-descrizione {
     font-family: 'Archivo Black', sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color:black; /* testo bianco */
+    color: black;
 }
-/* QUARTA FASCIA */
+
+/* ============================================
+   QUARTA FASCIA - COMPETENZE
+   ============================================ */
 .quarta-fascia {
     width: 100%;
-    height: 524px;
-    background-color: #FE4967; /* stesso rosa */
+    min-height: 524px;
+    background-color: #FE4967;
     display: flex;
     align-items: center;
+    padding: 60px 40px;
 }
 
-.quarta-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between; /* distanzia i rettangoli */
-    padding-left: 60px; /* parte dalla metà della prima colonna */
-    padding-right: 60px;
-}
-
-/* Rettangoli */
 .rettangolo {
-    width: 440px;
-    height: 310px;
-    background-color: #D9405B; /* leggermente più scuro del rosa */
+    width: 100%;
+    max-width: 440px;
+    min-height: 310px;
+    background-color: #D9405B;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* bandiera a sinistra per titolo e testo */
+    align-items: flex-start;
     padding: 20px;
     box-sizing: border-box;
     position: relative;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+}
+
+.rettangolo:hover {
+    transform: translateY(-10px);
 }
 
 /* Immagini dentro i rettangoli */
 .immagine-rettangolo {
     width: 100%;
-    height: 100%; /* circa 60% del rettangolo */
+    height: 220%; /* circa 60% del rettangolo */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -335,27 +422,29 @@ body {
     max-height: 180px;
     object-fit: contain;
     position: absolute;
-    
 }
+
 
 .immagine-rettangolo img:first-child {
+    left: 50%;   /* spostala a destra */
+    top: 20%;    /* spostala in basso */
     transform: rotate(20deg);
-    left: 50%;
-    top: 5%;
 }
 
+
 .immagine-rettangolo img:nth-child(2) {
-    transform: rotate(10deg) scale(1.2);
-    left: 60%;
-    top: -5%;
+    left: 50%;   /* più a destra */
+    top: 30%;    /* più bassa */
+    transform: rotate(5deg) scale(1.2);
 }
+
 
 /* Titolo e descrizione */
 .rettangolo-titolo {
     font-family: 'Rubik Dirt', cursive;
     font-size: 28px;
     color: rgb(0, 0, 0);
-    margin-top: 10px;
+    margin-top: auto;
 }
 
 .rettangolo-descrizione {
@@ -379,357 +468,348 @@ body {
 .rettangolo:hover .immagine-rettangolo img {
     animation: scrapbook-hover 1s steps(1, end) infinite;
 }
-
-/* ========== FASCIA 5 ========== */
+/* ============================================
+   QUINTA FASCIA - CAPPELLANDO
+   ============================================ */
 .quinta-fascia {
     width: 100%;
-    height: 500px;
-    background-color: black;
+    min-height: 550px;
+    background-color: #000000;
+    padding: 60px 40px;
     display: flex;
     align-items: center;
 }
 
-.quinta-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* Testo a sinistra */
-.quinta-fascia .testo-fascia {
-    grid-column: 2 / span 5;
-    display: flex;
-    flex-direction: column;
+.testo-fascia {
+    padding: 30px;
 }
 
 .fascia-small {
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
-    color: black;
-    margin: 0 0 10px 0;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .fascia-title {
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
     color: #FE4967;
-    margin: 0 0 10px 0;
+    margin: 10px 0;
+    line-height: 1.2;
 }
 
 .fascia-description {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 18px;
-    color: #FE4967;
-    margin: 0;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 1.6;
 }
 
-/* Immagini a destra */
-.quinta-fascia .immagine-fascia {
-    grid-column: 7 / span 6;
+.immagine-fascia {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;        /* distanza tra immagini se ce ne sono più di una */
-    overflow: visible; /* permette ingrandimento hover */
+    padding: 20px;
+}
+
+.parallax-box {
+    width: 100%;
+    max-width: 600px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.parallax-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.1s ease-out;
+}
+
+/* ============================================
+   SESTA FASCIA - IBRIDO77
+   ============================================ */
+.sesta-fascia {
+    width: 100%;
+    min-height: 550px;
+    background-color: #000;
+    padding: 60px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.immagine-fascia-sx {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.immagine-fascia-sx img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 15px;
+}
+
+.testo-fascia-dx {
+    padding: 30px;
+}
+
+.sesta-fascia .fascia-small {
+    color: #999;
+}
+
+.sesta-fascia .fascia-title {
+    color: #FE4967;
+}
+
+.sesta-fascia .fascia-description {
+    color: #fff;
 }
 
 .img-hover-effect {
-    width: auto;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 22px;
-    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    z-index: 1;
 }
 
 .img-hover-effect:hover {
-    transform: scale(1.04);
-    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
-    z-index: 10;
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
 }
 
-/* ========== FASCIA 6 ========== */
-.sesta-fascia {
+/* ============================================
+   FASCIA GALLERY - IBRIDO77
+   ============================================ */
+.fascia6-gallery {
     width: 100%;
-    height: 500px;
-    background-color: black;
-    display: flex;
-    align-items: center;
+    background-color: #000;
+    padding: 40px 20px;
 }
 
-.sesta-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
+.container-gallery {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* Immagine a sinistra */
-.sesta-fascia .immagine-fascia-sx {
-    grid-column: 1 / span 6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    overflow: visible;
+    max-width: 1440px;
+    margin: 0 auto;
+    justify-items: center; /* centra le immagini */
+    position: relative;
 }
 
-.sesta-fascia .immagine-fascia-sx img {
-    width: auto;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 22px;
-    transition: transform 0.45s ease, box-shadow 0.45s ease;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.sesta-fascia .immagine-fascia-sx img:hover {
-    transform: scale(1.04);
-    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
-    z-index: 10;
-}
-
-/* Testo a destra */
-.sesta-fascia .testo-fascia-dx {
-    grid-column: 8 / span 5;
+/* Cerchio rosa con 4 quadratini interni */
+.circle-checkbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #FE4967;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.5s, transform 0.5s;
 }
 
-/* SETTIMA FASCIA */
+.inner-squares {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+}
+
+.inner-squares span {
+    display: block;
+    background-color: #000;
+    border-radius: 2px;
+}
+
+/* Animazione pop-in immagini */
+.circle-checkbox.active ~ img {
+    transform: scale(1);
+    filter: brightness(1);
+    pointer-events: initial;
+}
+
+/* Far scomparire il cerchio al click */
+.circle-checkbox.active {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+/* Immagini iniziali piccole e scure */
+.container-gallery img {
+    width: 100%;
+    max-width: 200px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    transform: scale(0.1);
+    filter: brightness(0);
+    pointer-events: none;
+    border-radius: 10px;
+    transition: transform 1s, filter 1s;
+}
+
+/* Hover effect */
+.img-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.img-hover-effect:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .container-gallery img {
+        max-width: 150px;
+    }
+
+    .circle-checkbox {
+        width: 45px;
+        height: 45px;
+    }
+
+    .inner-squares {
+        width: 20px;
+        height: 20px;
+        gap: 3px;
+    }
+}
+
+
+
+/* ============================================
+   SETTIMA FASCIA - COPERTINA ALBUM
+   ============================================ */
 .settima-fascia {
     width: 100%;
-    height: 500px;
-    background-color: black;
+    min-height: 550px;
+    background-color: #000000;
+    padding: 60px 40px;
     display: flex;
     align-items: center;
 }
 
-.settima-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* Testo a sinistra */
-.settima-fascia .testo-fascia {
-    grid-column: 2 / span 5;
-    display: flex;
-    flex-direction: column;
-}
-
-.fascia-small {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
-    color: white;
-    margin: 0 0 10px 0;
-}
-
-.fascia-title {
-    font-family: 'Rubik Dirt', cursive;
-    font-size: 48px;
-    color: #FE4967;
-    margin: 0 0 10px 0;
-}
-
-.fascia-description {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 18px;
-    color: white;
-    margin: 0;
-}
-
-/* Contenitore immagini a destra */
 .settima-fascia .immagine-fascia {
-    grid-column: 8 / span 4;
     display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    gap: 20px;
 }
 
-/* Manteniamo dimensioni originali delle immagini */
 .settima-fascia .immagine-fascia img {
-    width: auto;       /* dimensioni originali */
-    height: 500px;     /* altezza originale */
-    border-radius: 22px;
-    object-fit: cover;
-    opacity: 1;
-    transform: translateY(0);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 15px;
 }
 
-/* Hover leggero senza esagerare */
-.settima-fascia .immagine-fascia img:hover {
-    transform: scale(1.15);  /* si allarga leggermente */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+/* Media query per schermi fino a 768px */
+@media (max-width: 768px) {
+    .settima-fascia {
+        padding: 60px 60px; /* aumenta il padding laterale su mobile */
+    }
 }
 
 
-
-
-
-/* OTTAVA FASCIA SENZA RETTANGOLI */
+/* ============================================
+   OTTAVA FASCIA - OPERE D'ARTE
+   ============================================ */
 .ottava-fascia {
     width: 100%;
-    height: 524px;
-    background-color: black; /* sfondo nero */
-    display: flex;
-    align-items: center;
+    background-color: #000;
+    padding: 60px 40px;
+    min-height: 600px;
 }
 
-.ottava-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 60px;
-}
-
-/* Singolo blocco */
 .box-arte {
-    width: 440px; /* come i rettangoli originali */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 400px;
 }
 
-/* Immagine che occupa lo spazio del rettangolo "sparito" */
-/* IMMAGINE leggermente più piccola per bordi stondati */
-/* Contenitore dell’immagine */
+.box-arte:hover {
+    transform: translateY(-10px);
+}
+
 .box-img {
-    width: auto;            /* mantiene la larghezza proporzionata */
-    max-width: 100%;        /* non supera lo spazio del box */
-    height: auto;           /* mantiene proporzioni originali */
-    border-radius: 6px;     /* bordi stondati */
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    display: block;
-    margin: 0 auto;         /* centra l’immagine nel box */
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-/* Animazione al passaggio del mouse */
-.box-arte:hover .box-img {
-    transform: scale(1.03) translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-
-
-/* Titolo sotto l’immagine */
 .box-title {
-    margin-top: 15px;
     font-family: 'Rubik Dirt', cursive;
-    font-size: 26px;
-    color: #FE4967; /* titolo bianco */
+    font-size: 28px;
+    color: #FE4967;
+    margin: 15px 0;
 }
 
-/* Descrizione rosa */
 .box-desc {
     font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
-    color: white; /* rosa chiaro */
-    margin-top: 5px;
+    font-size: 14px;
+    color: #fff;
     line-height: 1.4;
 }
 
-/* --- NONA FASCIA --- */
+/* ============================================
+   NONA FASCIA - MAGLIETTE
+   ============================================ */
 .nona-fascia {
     width: 100%;
-    height: 500px;
-    background-color: black; /* come quinta fascia */
+    min-height: 550px;
+    background-color: #000000;
+    padding: 60px 40px;
     display: flex;
     align-items: center;
 }
 
-.nona-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* Testo a sinistra */
-.nona-fascia .testo-fascia {
-    grid-column: 2 / span 5;
-    display: flex;
-    flex-direction: column;
-}
-
-.nona-fascia .fascia-small {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 16px;
-    color: white;
-    margin: 0 0 10px 0;
-}
-
-.nona-fascia .fascia-title {
-    font-family: 'Rubik Dirt', cursive;
-    font-size: 48px;
-    color: #FE4967;
-    margin: 0 0 10px 0;
-}
-
-.nona-fascia .fascia-description {
-    font-family: 'Archivo Black', sans-serif;
-    font-size: 18px;
-    color: white; /* rosa precedente */
-    margin: 0;
-}
-
-/* Immagine a destra */
 .nona-fascia .immagine-fascia {
-    grid-column: 7 / span 6;
-    width: 669px;
-    height: 400px;
+    width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    padding: 20px; 
 }
 
 .nona-fascia .immagine-fascia img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 22px;
-
-    opacity: 1;
-    transform: translateY(0);
-    transition: 
-        transform 0.5s ease,
-        box-shadow 0.5s ease;
+    max-width: 600px; 
+    height: auto;
+    border-radius: 15px; 
 }
 
-/* Hover effetto */
-.nona-fascia .immagine-fascia img:hover {
-    transform: scale(1.03) translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
-/* --- DECIMA FASCIA --- */
+
+/* ============================================
+   DECIMA FASCIA - INTRO FOTOGRAFIA
+   ============================================ */
 .decima-fascia {
     width: 100%;
-    height: 390px;                 /* altezza definita */
-    background-color: black;       /* sfondo nero */
+    height: 390px;
+    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -738,72 +818,64 @@ body {
 
 .contenuto-decima {
     text-align: center;
-    opacity: 0;                    /* per animazione */
-    transform: translateY(40px);   /* testo parte leggermente in basso */
+    opacity: 0;
+    transform: translateY(40px);
     transition: 
         opacity 1.3s cubic-bezier(0.16, 0.84, 0.44, 1),
         transform 1.3s cubic-bezier(0.16, 0.84, 0.44, 1);
 }
 
-/* quando diventa visibile */
 .contenuto-decima.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* scritta piccola sopra */
 .decima-small {
-    width: 181px; 
-    height: 22px;
-    margin: 0 auto 12px auto;
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
     color: white;
+    margin-bottom: 12px;
 }
 
-/* titolo grande */
 .decima-title {
-    width: 900px;
-    height: 71px;
-    margin: 0 auto;
     font-family: 'Rubik Dirt', cursive;
     font-size: 48px;
-    color: #FE4967;     /* rosa già usato */
+    color: #FE4967;
     line-height: 1;
+    margin: 0;
 }
 
-/* ========== UNDICESIMA FASCIA - DOPPIO CAROUSEL ========== */
+/* ============================================
+   UNDICESIMA FASCIA - CAROUSEL
+   ============================================ */
 .undicesima-fascia {
     width: 100%;
-    max-width: 1440px; /* limite massimo */
+    max-width: 1440px;
     margin: 0 auto;
-    height: 780px; /* più alta per evitare tagli */
+    min-height: 780px;
     background-color: black;
     padding: 60px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 80px; /* distanza tra le due righe */
-    overflow: hidden; /* evita scroll orizzontale */
+    gap: 80px;
+    overflow: hidden;
 }
 
-/* Singola riga carousel */
 .carousel-row {
     width: 100%;
-    overflow: visible; /* permette zoom senza taglio */
+    overflow: visible;
     position: relative;
 }
 
-/* Track immagini */
 .carousel-track {
     display: flex;
     gap: 50px;
     position: relative;
-    width: fit-content; /* adatta la larghezza alle immagini */
-    overflow: visible;  /* permette alle immagini di crescere senza tagli */
+    width: fit-content;
+    overflow: visible;
 }
 
-/* Immagini */
 .carousel-track img {
     width: 325px;
     height: 272px;
@@ -814,23 +886,20 @@ body {
     z-index: 1;
 }
 
-/* Hover: zoom e luce */
 .carousel-track img:hover {
-    transform: scale(1.18); /* ingrandimento elegante */
-    box-shadow: 0 35px 55px rgba(255, 70, 120, 0.45);
-    z-index: 10; /* sopra le altre immagini */
+    transform: scale(1.18);
+    box-shadow: 0 10px 55px rgba(255, 70, 120, 0.45);
+    z-index: 10;
 }
 
-/* Animazioni scorrimento */
 .row-top .carousel-track {
-    animation: scroll-left 30s linear infinite; /* rallentato da 16s a 30s */
+    animation: scroll-left 30s linear infinite;
 }
 
 .row-bottom .carousel-track {
-    animation: scroll-right 30s linear infinite; /* rallentato */
+    animation: scroll-right 30s linear infinite;
 }
 
-/* Keyframes scorrimento */
 @keyframes scroll-left {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
@@ -841,98 +910,52 @@ body {
     to { transform: translateX(0); }
 }
 
-/* Evita pausa al passaggio del mouse */
-.carousel-row:hover .carousel-track {
-    animation-play-state: running;
-}
-
-
-/* ========== DODICESIMA FASCIA - correggi dimensioni video + testo a destra ========== */
+/* ============================================
+   DODICESIMA FASCIA - VIDEO
+   ============================================ */
 .dodicesima-fascia {
     width: 100%;
-    height: 500px;
+    min-height: 500px;
     background: #000;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
+    padding: 60px 40px;
 }
 
-.dodicesima-fascia .container {
-    max-width: 1440px;
-    width: 100%;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-/* VIDEO A SINISTRA (colonne 1 - 6) */
 .video-colonna {
-    grid-column: 1 / span 6;
     display: flex;
     gap: 18px;
     align-items: center;
-    justify-content: center; /* centra i video nella colonna */
-    padding-left: 24px;
-    padding-right: 12px;
-    box-sizing: border-box;
+    justify-content: center;
     height: 100%;
-    overflow: hidden; /* impedisce overflow orizzontale */
+    flex-wrap: wrap;
 }
 
-/* ogni video prende al massimo metà della colonna e non supera l'altezza */
 .video-vert {
     display: block;
-    max-height: 92%;        /* non supera l'altezza della fascia */
-    max-width: 48%;         /* occupa al massimo metà della colonna video */
+    max-height: 450px;
     width: auto;
-    object-fit: contain;    /* mostra il video intero, senza crop */
+    max-width: 48%;
+    object-fit: contain;
     border-radius: 12px;
     background: #000;
     transition: transform 0.35s ease, filter 0.35s ease, box-shadow 0.35s ease;
     box-shadow: 0 8px 30px rgba(0,0,0,0.45);
 }
 
-/* Hover elegante ma non eccessivo */
 .video-vert:hover {
     transform: scale(1.03);
     filter: brightness(1.06);
     box-shadow: 0 18px 45px rgba(0,0,0,0.55);
 }
 
-/* OVERLAY leggeri — lascio come li avevi */
-.overlay-dark {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.25);
-    z-index: 2;
-    pointer-events: none;
-}
-
-.overlay-fade {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,0.45) 100%);
-    z-index: 3;
-    pointer-events: none;
-}
-
-/* TESTO A DESTRA (colonne 8 - 12) */
 .testo-video-fascia {
-    grid-column: 8 / span 5;
-    z-index: 4;
+    padding: 30px;
     text-align: left;
-    padding-right: 48px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
 }
 
-/* tipografia */
 .testo-video-fascia .fascia-small {
     font-family: 'Archivo Black', sans-serif;
     font-size: 16px;
@@ -957,22 +980,416 @@ body {
     line-height: 1.4;
 }
 
-/* RESPONSIVE: sotto 1100px mettiamo i video sopra e testo sotto */
-@media (max-width: 1100px) {
-    .dodicesima-fascia { height: auto; padding: 28px 0; }
-    .dodicesima-fascia .container { grid-template-columns: 1fr; row-gap: 18px; }
-    .video-colonna { grid-column: 1 / -1; flex-direction: row; justify-content: center; padding: 0 24px; gap: 12px; }
-    .video-vert { max-width: 46%; max-height: 55vh; }
-    .testo-video-fascia { grid-column: 1 / -1; padding: 0 24px; text-align: center; }
-    .testo-video-fascia .fascia-title { font-size: 40px; }
+
+
+/* FASCIA TREDICESIMA */
+.tredicesima-fascia {
+    width: 100%;
+    min-height: 400px;
+    background-color: #FE4967;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw 2vw; /* padding fluido */
+    text-align: center;
+    box-sizing: border-box;
+    color: #000000; /* scritte nere */
 }
 
-/* MOBILE stretto: video in colonna */
-@media (max-width: 600px) {
-    .video-colonna { flex-direction: column; gap: 12px; }
-    .video-vert { max-width: 100%; max-height: 45vh; width: auto; }
-    .testo-video-fascia .fascia-title { font-size: 28px; }
+/* Titolo grande - fluido */
+.tredicesima-fascia .tredicesima-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: clamp(1.4rem, 4vw, 2.5rem); /* fluid font size */
+    margin-bottom: 1rem;
+    color: #000000;
+}
+
+/* Testo piccolo sotto titolo - molto più piccolo */
+.tredicesima-fascia .tredicesima-subtitle {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem); /* fluido e piccolo */
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.4;
+    color: #000000;
+}
+
+/* Pulsante */
+.tredicesima-fascia .contact-btn {
+    background-color: #000000;
+    color: #FE4967;
+    font-family: 'Rubik Dirt', cursive;
+    font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+    padding: 0.8em 2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tredicesima-fascia .contact-btn:hover {
+    background-color: #ffe6f0;
+}
+
+/* POP-UP FORM */
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-form .popup-content {
+    background-color: #FE4967;
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    text-align: left;
+    box-sizing: border-box;
+    color: #000000;
+    position: relative;
+}
+
+.popup-form .popup-content h3 {
+    font-family: 'Rubik Dirt', cursive;
+    margin-top: 0;
+    color: #000000;
+}
+
+.popup-form .popup-content textarea {
+    width: 100%;
+    height: 150px;
+    margin: 1rem 0;
+    padding: 0.8em;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: none;
+    resize: none;
+}
+
+.popup-form .popup-content button {
+    background-color: #ffffff;
+    color: #FE4967;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Rubik', sans-serif;
+}
+
+.popup-form .close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* RESPONSIVE FLUIDO */
+@media (max-width: 992px) {
+    .tredicesima-fascia {
+        padding: 4vw 2vw;
+    }
+    .tredicesima-fascia .tredicesima-title {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+    }
+    .tredicesima-fascia .tredicesima-subtitle {
+        font-size: clamp(0.8rem, 2vw, 1.1rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .tredicesima-fascia {
+        padding: 3vw 2vw;
+        min-height: 300px;
+    }
+    .tredicesima-fascia .tredicesima-title {
+        font-size: clamp(1.3rem, 7vw, 2rem);
+    }
+    .tredicesima-fascia .tredicesima-subtitle {
+        font-size: clamp(0.7rem, 2.5vw, 1rem);
+    }
+}
+
+@media (max-width: 480px) {
+    .tredicesima-fascia {
+        padding: 3vw 2vw;
+        min-height: 250px;
+    }
+    .tredicesima-fascia .tredicesima-title {
+        font-size: clamp(1.2rem, 8vw, 1.8rem);
+    }
+    .tredicesima-fascia .tredicesima-subtitle {
+        font-size: clamp(0.6rem, 3vw, 0.9rem);
+    }
 }
 
 
 
+/* ============================================
+   MEDIA QUERIES - RESPONSIVE
+   ============================================ */
+
+/* TABLET & MOBILE - 992px e inferiore */
+@media (max-width: 992px) {
+    /* MENU: Mostra hamburger, nascondi desktop nav */
+    .hamburger {
+        display: flex;
+    }
+    
+    .desktop-nav {
+        display: none;
+    }
+    
+    .hero {
+        height: 60vh;
+        min-height: 400px;
+    }
+    
+    .hero-text .title {
+        font-size: 40px;
+    }
+    
+    .seconda-titolo {
+        font-size: 48px;
+        text-align: center;
+    }
+    
+    .immagini-scrapbook {
+        justify-content: center;
+        min-height: 300px;
+    }
+    
+    .immagini-scrapbook img {
+        width: 140px;
+    }
+    
+    .immagini-scrapbook img:nth-child(1),
+    .immagini-scrapbook img:nth-child(2),
+    .immagini-scrapbook img:nth-child(3) {
+        margin-top: 0;
+    }
+    
+    .terza-titolo,
+    .fascia-title {
+        font-size: 40px;
+    }
+    
+    .terza-descrizione,
+    .fascia-description {
+        font-size: 16px;
+    }
+    
+    .rettangolo {
+        max-width: 100%;
+    }
+    
+    .carousel-track img {
+        width: 250px;
+        height: 210px;
+    }
+    
+    .video-vert {
+        max-width: 100%;
+        max-height: 350px;
+    }
+    
+    .tredicesima-title {
+        font-size: 40px;
+    }
+    
+    .decima-title {
+        font-size: 36px;
+    }
+}
+
+/* MOBILE - 768px e inferiore */
+@media (max-width: 768px) {
+    .header-top {
+        padding: 0 20px;
+        top: 15px;
+    }
+    
+    .hero-left {
+        font-size: 16px;
+    }
+    
+    /* Menu mobile più stretto */
+    .mobile-menu {
+        max-width: 300px;
+    }
+    
+    .mobile-link {
+        font-size: 24px;
+    }
+    
+    .hero {
+        height: 50vh;
+        min-height: 350px;
+    }
+    
+    .hero-text {
+        text-align: center;
+    }
+    
+    .hero-text .subtitle {
+        font-size: 20px;
+    }
+    
+    .hero-text .title {
+        font-size: 32px;
+    }
+    
+    .hero-text .description {
+        font-size: 16px;
+    }
+    
+    .seconda-fascia,
+    .terza-fascia,
+    .quinta-fascia,
+    .sesta-fascia,
+    
+    .nona-fascia {
+        padding: 40px 20px;
+    }
+    
+    .seconda-titolo {
+        font-size: 36px;
+    }
+    
+    .immagini-scrapbook {
+        flex-direction: column;
+        gap: 20px;
+        min-height: auto;
+    }
+    
+    .immagini-scrapbook img {
+        width: 120px;
+    }
+    
+    .colonna-immagine img {
+        max-width: 100%;
+    }
+    
+    .terza-titolo,
+    .fascia-title {
+        font-size: 32px;
+    }
+    
+    .terza-descrizione,
+    .fascia-description {
+        font-size: 14px;
+    }
+    
+    .rettangolo-titolo {
+        font-size: 28px;
+    }
+    
+    .rettangolo-descrizione {
+        font-size: 14px;
+    }
+    
+    .testo-fascia,
+    .colonna-testo,
+    .testo-fascia-dx,
+    .testo-video-fascia {
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .container-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+    }
+    
+    .carousel-track {
+        gap: 30px;
+    }
+    
+    .carousel-track img {
+        width: 200px;
+        height: 170px;
+    }
+    
+    .video-colonna {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .video-vert {
+        max-width: 100%;
+        max-height: 300px;
+    }
+    
+    .tredicesima-title {
+        font-size: 32px;
+    }
+    
+    .decima-title {
+        font-size: 28px;
+    }
+    
+    .box-title {
+        font-size: 24px;
+    }
+}
+
+/* SMALL MOBILE - 480px e inferiore */
+@media (max-width: 480px) {
+    .header-top {
+        padding: 0 15px;
+    }
+    
+    .hero-left {
+        font-size: 14px;
+    }
+    
+    /* Menu mobile full width */
+    .mobile-menu {
+        max-width: 100%;
+    }
+    
+    .mobile-menu-list {
+        padding: 80px 30px;
+        gap: 25px;
+    }
+    
+    .mobile-link {
+        font-size: 22px;
+    }
+    
+    .hero-text .title {
+        font-size: 28px;
+    }
+    
+    .seconda-titolo {
+        font-size: 28px;
+    }
+    
+    .terza-titolo,
+    .fascia-title {
+        font-size: 28px;
+    }
+    
+    .tredicesima-title {
+        font-size: 28px;
+    }
+    
+    .decima-title {
+        font-size: 24px;
+    }
+    
+    .carousel-track img {
+        width: 150px;
+        height: 130px;
+    }
+}

@@ -3,229 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.png">
     <title>Aurora Giulianelli</title>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Archivo+Black&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
 
-<!-- FASCIA 1 -->
+<!-- HERO SECTION -->
 <section class="hero">
+    <!-- HEADER / NAVIGATION -->
     <div class="header-top">
+        <!-- Logo/Greeting -->
         <span class="hero-left">Hello, nice to meet you!</span>
-        <nav class="hero-right">
-            <a href="#">creazioni</a>
-            <a href="#">story</a>
-            <a href="#">chisono</a>
-            <a href="#">contatti</a>
+        
+        <!-- MENU DESKTOP - Visibile solo su ≥992px -->
+        <nav class="desktop-nav">
+            <a href="#creazioni">creazioni</a>
+            <a href="#chisono">chisono</a>
+            <a href="#contatti">contatti</a>
         </nav>
+        
+        <!-- HAMBURGER BUTTON - Visibile solo su <992px -->
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
     </div>
+    
+    <!-- MENU MOBILE OVERLAY -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <button class="close-menu" id="closeMenu" aria-label="Chiudi menu">
+            <span>&times;</span>
+        </button>
+        <ul class="mobile-menu-list">
+            <li><a href="#creazioni" class="mobile-link">creazioni</a></li>
+            <li><a href="#chisono" class="mobile-link">chisono</a></li>
+            <li><a href="#contatti" class="mobile-link">contatti</a></li>
+        </ul>
+    </nav>
 
-    <div class="container">
-        <div class="hero-text">
-            <h2 class="subtitle">portfolio</h2>
-            <h1 class="title">AURORA GIULIANELLI</h1>
-            <p class="description">content creator / designer</p>
+    <!-- Hero Content -->
+    <div class="container-fluid">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 col-lg-4 offset-lg-7">
+                <div class="hero-text">
+                    <h2 class="subtitle">portfolio</h2>
+                    <h1 class="title">AURORA GIULIANELLI</h1>
+                    <p class="description">content creator / designer</p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
-
-
 
 
 <!-- SECONDA FASCIA -->
-
-
 <section class="seconda-fascia">
-    <div class="container">
-        <div class="colonna-sinistra">
-            <h2 class="seconda-titolo">Tra arte, <br> design e fotografia</h2>
-        </div>
-        <div class="colonna-destra">
-            <div class="immagini-scrapbook">
-              <img src="css/img_/lettera.png" alt="lettera">
-                <img src="css/img_/fotografia.png" alt="fotografia">
-               
-                <img src="css/img_/pennello 2.png" alt="pennello 2">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <h2 class="seconda-titolo">Tra arte, <br> design e fotografia</h2>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="immagini-scrapbook">
+                    <img src="img/lettera.png" alt="lettera">
+                    <img src="img/fotografia.png" alt="fotografia">
+                    <img src="img/pennello 2.png" alt="pennello 2">
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- TERZA FASCIA -->
-<section class="terza-fascia">
-    <div class="container">
-        <div class="colonna-immagine">
-            <img src="css/img_/img2.png" alt="about me image">
-        </div>
-        <div class="colonna-testo">
-            <h2 class="terza-titolo">About Me</h2>
-            <p class="terza-descrizione">
-                Studentessa universitaria con un precedente percorso di formazione artistica liceale di cinque anni.<br>
-                Amo sperimentare con la tipografia, i colori e le forme per creare linguaggi visivi capaci di raccontare idee ed emozioni in modi sempre nuovi.<br>
-                Credo nella comunicazione visiva come linguaggio universale, un modo di esprimersi che va oltre le parole, accessibile a tutti e capace di unire le persone attraverso l’immagine.
-            </p>
+<!-- TERZA FASCIA - ABOUT ME -->
+<section class="terza-fascia" id="chisono">
+    <div class="container-fluid">
+        <div class="row align-items-center h-100">
+            <div class="col-12 col-lg-6">
+                <div class="colonna-immagine">
+                    <img src="img/img2.png" alt="about me image">
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="colonna-testo">
+                    <h2 class="terza-titolo">About Me</h2>
+                    <p class="terza-descrizione">
+                        Studentessa universitaria con un precedente percorso di formazione artistica liceale di cinque anni.<br>
+                        Amo sperimentare con la tipografia, i colori e le forme per creare linguaggi visivi capaci di raccontare idee ed emozioni in modi sempre nuovi.<br>
+                        Credo nella comunicazione visiva come linguaggio universale, un modo di esprimersi che va oltre le parole, accessibile a tutti e capace di unire le persone attraverso l'immagine.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-
-    <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const img = document.querySelector(".colonna-immagine img");
-
-    const revealImage = () => {
-        const trigger = window.innerHeight * 0.85; // quando l'immagine entra nel viewport
-        const top = img.getBoundingClientRect().top;
-
-        if (top < trigger) {
-            img.classList.add("in-view");
-        }
-    };
-
-    window.addEventListener("scroll", revealImage);
-    revealImage(); // in caso l’immagine sia già visibile all’apertura della pagina
-});
-</script>
-
 </section>
 
-<!-- QUARTA FASCIA -->
+<!-- QUARTA FASCIA - COMPETENZE -->
 <section class="quarta-fascia">
-    <div class="container">
-        <!-- Rettangolo 1 -->
-        <div class="rettangolo">
-            <div class="immagine-rettangolo">
-                <img src="css/img_/pennello 1.png" alt="pennello 1">
-                <img src="css/img_/pennello 2.png" alt="pennello 2">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <!-- Rettangolo 1 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="rettangolo">
+                    <div class="immagine-rettangolo">
+                        <img src="img/pennello 1.png" alt="pennello 1">
+                        <img src="img/pennello 2.png" alt="pennello 2">
+                    </div>
+                    <h3 class="rettangolo-titolo">Arte</h3>
+                    <p class="rettangolo-descrizione">La mia prima passione, nata da bambina.<br>Non servono parole per esprimerci.</p>
+                </div>
             </div>
-            <h3 class="rettangolo-titolo">Arte</h3>
-            <p class="rettangolo-descrizione">La mia prima passione, nata da bambina.<br>Non servono parole per esprimerci.</p>
-        </div>
 
-        <!-- Rettangolo 2 -->
-        <div class="rettangolo">
-            <div class="immagine-rettangolo">
-                <img src="css/img_/fotografia.png" alt="fotografia">
+            <!-- Rettangolo 2 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="rettangolo">
+                    <div class="immagine-rettangolo">
+                        <img src="img/fotografia.png" alt="fotografia">
+                    </div>
+                    <h3 class="rettangolo-titolo">Fotografia</h3>
+                    <p class="rettangolo-descrizione">Una passione scoperta recentemente ma che cercherò di coltivare tutta la vita.</p>
+                </div>
             </div>
-            <h3 class="rettangolo-titolo">Fotografia</h3>
-            <p class="rettangolo-descrizione">Una passione scoperta recentemente ma che cercherò di coltivare tutta la vita.</p>
-        </div>
 
-        <!-- Rettangolo 3 -->
-        <div class="rettangolo">
-            <div class="immagine-rettangolo">
-                <img src="css/img_/lettera.png" alt="lettera">
+            <!-- Rettangolo 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="rettangolo">
+                    <div class="immagine-rettangolo">
+                        <img src="img/lettera.png" alt="lettera">
+                    </div>
+                    <h3 class="rettangolo-titolo">Design</h3>
+                    <p class="rettangolo-descrizione">Un luogo dove tutte le mie passioni possono convivere e prendere forma.</p>
+                </div>
             </div>
-            <h3 class="rettangolo-titolo">Design</h3>
-            <p class="rettangolo-descrizione">Un luogo dove tutte le mie passioni possono convivere e prendere forma.</p>
         </div>
     </div>
 </section>
 
-<!-- ========== FASCIA 5 ========== -->
-<section class="quinta-fascia">
-    <div class="container">
-        <!-- Testo a sinistra -->
-        <div class="testo-fascia">
-            <p class="fascia-small">alcuni miei lavori...</p>
-            <h2 class="fascia-title">Cappellano <br> con Reyman</h2>
-            <p class="fascia-description">
-                Lorem ipsum dolor sit amet, consectetur <br> adipiscing elit. Maecenas quis consequat <br> dui, nec congue augue. Etiam consequat<br> maximus.
-            </p>
-        </div>
-        <!-- Immagine a destra -->
-        <div class="immagine-fascia">
-            <img src="css/img_/img3.png" alt="img3" class="img-hover-effect">
+<!-- QUINTA FASCIA - CAPPELLANDO -->
+<section class="quinta-fascia" id="creazioni">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6 order-2 order-lg-1">
+                <div class="testo-fascia">
+                    <p class="fascia-small">alcuni miei lavori...</p>
+                    <h2 class="fascia-title">Cappellando <br> con Reinhard</h2>
+                    <p class="fascia-description">
+                        Progettare e realizzare un <br> cappello artigianale insieme <br> a un esperto del settore 
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 order-1 order-lg-2">
+                <div class="immagine-fascia">
+                    <div class="parallax-box" data-parallax>
+                        <img src="img/deb.png" class="parallax-img">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ========== FASCIA 6 ========== -->
+<!-- SESTA FASCIA - IBRIDO77 -->
 <section class="sesta-fascia">
-    <div class="container">
-        <!-- Immagine a sinistra -->
-        <div class="immagine-fascia-sx">
-            <img src="css/img_/img4.png" alt="img4" class="img-hover-effect">
-        </div>
-        <!-- Testo a destra -->
-        <div class="testo-fascia-dx">
-            <p class="fascia-small">nuovo progetto...</p>
-            <h2 class="fascia-title">IBRIDO77</h2>
-            <p class="fascia-description">
-                Un programma in collaborazione con il<br> comune di Rimini per la costruzione 
-                di un’<br>identità visiva di un ex cinema di quartiere<br> per renderlo HUB sociale.
-            </p>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="immagine-fascia-sx">
+                    <img src="img/img4.png" alt="img4" class="img-hover-effect">
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="testo-fascia-dx">
+                    <p class="fascia-small">nuovo progetto...</p>
+                    <h2 class="fascia-title">IBRIDO77</h2>
+                    <p class="fascia-description">
+                        Un programma in collaborazione con il<br> comune di Rimini per la costruzione 
+                        di un'<br>identità visiva di un ex cinema di quartiere<br> per renderlo HUB sociale.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- SETTIMA FASCIA -->
+<section class="fascia6-gallery">
+    <div class="container-gallery gallery">
+        <!-- Cerchio con 4 quadratini interni -->
+        <div class="circle-checkbox" id="circleCheckbox">
+            <div class="inner-squares">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <img src="img/Rectangle 28.png" alt="img1">
+        <img src="img/Rectangle 24.png" alt="img2">
+        <img src="img/Rectangle 25.png" alt="img3">
+        <img src="img/Rectangle 23.png" alt="img4">
+        <img src="img/Rectangle 21.png" alt="img5">
+        <img src="img/Rectangle 26.png" alt="img6">
+    </div>
+</section>
+
+
+
+<!-- SETTIMA FASCIA - COPERTINA ALBUM -->
 <section class="settima-fascia">
-    <div class="container">
-
-        <!-- Testo a sinistra -->
-        <div class="testo-fascia">
-            <p class="fascia-small">nuovo progetto...</p>
-            <h2 class="fascia-title">Copertina Album Musicale</h2>
-            <p class="fascia-description">
-                Realizzazione della copertina di un album musicale, scattata foto 
-                poi modificata in postproduzione e aggiunta di titolo e informazioni varie.
-            </p>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="testo-fascia">
+                    <p class="fascia-small">nuovo progetto...</p>
+                    <h2 class="fascia-title">Copertina Album Musicale</h2>
+                    <p class="fascia-description">
+                        Realizzazione della copertina di un album <br> musicale, scattata foto 
+                        poi modificata <br> in postproduzione e aggiunta di titolo e informazioni varie.
+                    </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="immagine-fascia">
+                    <img src="img/img5.png" class="img-hover-effect" alt="Album cover 1">
+                    <img src="img/img24 2.png" class="img-hover-effect" alt="Album cover 2">
+                </div>
+            </div>
         </div>
-
-        <!-- Immagini a destra -->
-        <div class="immagine-fascia">
-            <img src="css/img_/img5.png" class="img-hover-effect" alt="img5">
-            <img src="css/img_/img24 2.png" class="img-hover-effect" alt="img24">
-        </div>
-
     </div>
 </section>
 
-
-
-<!-- OTTAVA FASCIA -->
+<!-- OTTAVA FASCIA - OPERE D'ARTE -->
 <section class="ottava-fascia">
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <!-- BOX 1 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="box-arte">
+                    <img class="box-img" src="img/img6.png" alt="tempera">
+                    <h3 class="box-title">Tempera</h3>
+                    <p class="box-desc">Upupa realizzata con tempera</p>
+                </div>
+            </div>
 
-        <!-- BOX 1 -->
-        <div class="box-arte">
-            <img class="box-img" src="css/img_/img6.png" alt="tempera">
-            <h3 class="box-title">Tempera</h3>
-            <p class="box-desc">upupa realizzata con tempera</p>
+            <!-- BOX 2 -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                <div class="box-arte">
+                    <img class="box-img" src="img/img7.png" alt="acquerello">
+                    <h3 class="box-title">Ritratto ad acquerello</h3>
+                    <p class="box-desc">Ritratto realistico realizzato con acquerelli</p>
+                </div>
+            </div>
+
+            <!-- BOX 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="box-arte">
+                    <img class="box-img" src="img/img8.png" alt="anatomia">
+                    <h3 class="box-title">Anatomia umana</h3>
+                    <p class="box-desc">Realizzazione di un cranio attraverso matite</p>
+                </div>
+            </div>
         </div>
-
-        <!-- BOX 2 -->
-        <div class="box-arte">
-            <img class="box-img" src="css/img_/img7.png" alt="acquerello">
-            <h3 class="box-title">Ritratto ad acquerello</h3>
-            <p class="box-desc">Ritratto realistico realizzato con acquerelli</p>
-        </div>
-
-        <!-- BOX 3 -->
-        <div class="box-arte">
-            <img class="box-img" src="css/img_/img8.png" alt="anatomia">
-            <h3 class="box-title">Anatomia umana</h3>
-            <p class="box-desc">Realizzazione di un cranio attraverso matite</p>
-        </div>
-
     </div>
 </section>
 
-<!-- NONA FASCIA -->
+<!-- NONA FASCIA - MAGLIETTE -->
 <section class="nona-fascia">
-    <div class="container">
-        <div class="testo-fascia">
-            <p class="fascia-small">realizzazione e stampa di magliette Jesus</p>
-            <h2 class="fascia-title">Creazione <br>Magliette</h2>
-            <p class="fascia-description"> magliette personalizzate Jesus.</p>
-        </div>
-        <div class="immagine-fascia">
-            <img src="css/img_/img9.png" alt="Creazione Magliette" class="img-hover-effect">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="testo-fascia">
+                    <p class="fascia-small">Lavoro Personale</p>
+                    <h2 class="fascia-title">Creazione <br>Magliette</h2>
+                    <p class="fascia-description"> magliette personalizzate Jesus.</p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="immagine-fascia">
+                    <img src="img/img9.png" alt="Creazione Magliette" class="img-hover-effect">
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- DECIMA FASCIA -->
+<!-- DECIMA FASCIA - INTRO FOTOGRAFIA -->
 <section class="decima-fascia">
     <div class="contenuto-decima">
         <p class="decima-small">Fotografa per Eventi</p>
@@ -233,144 +300,243 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
 </section>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const decima = document.querySelector(".contenuto-decima");
-
-    function revealDecima() {
-        const trigger = window.innerHeight * 0.8; 
-        const top = decima.getBoundingClientRect().top;
-
-        if (top < trigger) {
-            decima.classList.add("visible");
-            window.removeEventListener("scroll", revealDecima);
-        }
-    }
-
-    window.addEventListener("scroll", revealDecima);
-});
-</script>
-
 <!-- UNDICESIMA FASCIA - DOPPIO CAROUSEL -->
 <section class="undicesima-fascia">
-    
     <!-- Riga superiore (img10 → img15) -->
     <div class="carousel-row row-top">
         <div class="carousel-track">
-
-            <img src="css/img_/img10.png" alt="">
-            <img src="css/img_/img11.png" alt="">
-            <img src="css/img_/img12.png" alt="">
-            <img src="css/img_/img13.png" alt="">
-            <img src="css/img_/img14.png" alt="">
-            <img src="css/img_/img15.png" alt="">
-
+            <img src="img/img10.png" alt="">
+            <img src="img/img11.png" alt="">
+            <img src="img/img12.png" alt="">
+            <img src="img/img13.png" alt="">
+            <img src="img/img14.png" alt="">
+            <img src="img/img15.png" alt="">
             <!-- DUPLICATE -->
-            <img src="css/img_/img10.png" alt="">
-            <img src="css/img_/img11.png" alt="">
-            <img src="css/img_/img12.png" alt="">
-            <img src="css/img_/img13.png" alt="">
-            <img src="css/img_/img14.png" alt="">
-            <img src="css/img_/img15.png" alt="">
-
+            <img src="img/img10.png" alt="">
+            <img src="img/img11.png" alt="">
+            <img src="img/img12.png" alt="">
+            <img src="img/img13.png" alt="">
+            <img src="img/img14.png" alt="">
+            <img src="img/img15.png" alt="">
         </div>
     </div>
 
     <!-- Riga inferiore (img16 → img21) -->
     <div class="carousel-row row-bottom">
         <div class="carousel-track">
-
-            <img src="css/img_/img16.png" alt="">
-            <img src="css/img_/img17.png" alt="">
-            <img src="css/img_/img18.png" alt="">
-            <img src="css/img_/img19.png" alt="">
-            <img src="css/img_/img20.png" alt="">
-            <img src="css/img_/img21.png" alt="">
-
+            <img src="img/img16.png" alt="">
+            <img src="img/img17.png" alt="">
+            <img src="img/img18.png" alt="">
+            <img src="img/img19.png" alt="">
+            <img src="img/img20.png" alt="">
+            <img src="img/img21.png" alt="">
             <!-- DUPLICATE -->
-            <img src="css/img_/img16.png" alt="">
-            <img src="css/img_/img17.png" alt="">
-            <img src="css/img_/img18.png" alt="">
-            <img src="css/img_/img19.png" alt="">
-            <img src="css/img_/img20.png" alt="">
-            <img src="css/img_/img21.png" alt="">
-
+            <img src="img/img16.png" alt="">
+            <img src="img/img17.png" alt="">
+            <img src="img/img18.png" alt="">
+            <img src="img/img19.png" alt="">
+            <img src="img/img20.png" alt="">
+            <img src="img/img21.png" alt="">
         </div>
     </div>
-
 </section>
 
-<!-- DODICESIMA FASCIA -->
+<!-- DODICESIMA FASCIA - VIDEO -->
 <section class="dodicesima-fascia">
-    <div class="container">
-
-        <!-- VIDEO A SINISTRA -->
-        <div class="video-colonna">
-            <video src="css/video_/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
-            <video src="css/video_/Raduno.mp4" class="video-vert" autoplay muted loop playsinline></video>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-12 col-lg-6">
+                <div class="video-colonna">
+                    <video src="video/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
+                    <video src="video/Raduno.mp4" class="video-vert" autoplay muted loop playsinline></video>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="testo-video-fascia">
+                    <p class="fascia-small">VIDEOMAKING</p>
+                    <h2 class="fascia-title">Video e Montaggi</h2>
+                    <p class="fascia-description">
+                        Mi occupo non solo di fotografia ma anche di riprese <br> video e montaggio.  
+                        Ecco alcuni miei recenti lavori.
+                    </p>
+                </div>
+            </div>
         </div>
+    </div>
+</section>
 
-        <!-- TESTO A DESTRA -->
-        <div class="testo-video-fascia">
-            <p class="fascia-small">VIDEOMAKING</p>
-            <h2 class="fascia-title">Video e Montaggi</h2>
-            <p class="fascia-description">
-                Mi occupo non solo di fotografia ma anche di riprese <br> video e montaggio.  
-                Ecco alcuni miei recenti lavori.
-            </p>
+<!-- TREDICESIMA FASCIA -->
+<section class="tredicesima-fascia" id="contatti">
+    <div class="container-fluid">
+        <div class="row justify-content-center align-items-center text-center">
+            <div class="col-12 col-lg-8">
+                <!-- Titolo grande -->
+                <h2 class="tredicesima-title">the end...ora maybe just the beginning</h2>
+                
+                <!-- Testo piccolo sotto titolo -->
+                <p class="tredicesima-subtitle">
+                    ora che mi conosci se ti va possiamo collaborare per qualche fantastico nuovo progetto assieme, clicca qui per contattarmi
+                </p>
+                
+                <!-- Pulsante -->
+                <button class="contact-btn" id="openFormBtn">Contact me</button>
+            </div>
         </div>
-
     </div>
 </section>
 
 
+    <!-- Pop-up form -->
+    <div class="popup-form" id="popupForm">
+        <div class="popup-content">
+            <span class="close-btn" id="closeFormBtn">&times;</span>
+            <h3>Chat with me</h3>
+            <form id="contactForm">
+                <textarea placeholder="Scrivi il tuo messaggio..." required></textarea>
+                <button type="submit">Invia</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- SCRIPTS -->
 <script>
+// Animazione immagine About Me
+document.addEventListener("DOMContentLoaded", () => {
+    const img = document.querySelector(".colonna-immagine img");
+    if (img) {
+        const revealImage = () => {
+            const trigger = window.innerHeight * 0.85;
+            const top = img.getBoundingClientRect().top;
+            if (top < trigger) {
+                img.classList.add("in-view");
+            }
+        };
+        window.addEventListener("scroll", revealImage);
+        revealImage();
+    }
+});
+
+// Animazione Decima Fascia
+document.addEventListener("DOMContentLoaded", () => {
+    const decima = document.querySelector(".contenuto-decima");
+    if (decima) {
+        function revealDecima() {
+            const trigger = window.innerHeight * 0.8; 
+            const top = decima.getBoundingClientRect().top;
+            if (top < trigger) {
+                decima.classList.add("visible");
+                window.removeEventListener("scroll", revealDecima);
+            }
+        }
+        window.addEventListener("scroll", revealDecima);
+    }
+});
+
+// Effetto Parallax
+window.addEventListener("scroll", function () {
+    document.querySelectorAll("[data-parallax]").forEach(box => {
+        const img = box.querySelector(".parallax-img");
+        if (img) {
+            const rect = box.getBoundingClientRect();
+            const delta = (rect.top + rect.height/2 - window.innerHeight/2) / (window.innerHeight/2);
+            const move = delta * -80;
+            img.style.transform = `translateY(${move}px)`;
+        }
+    });
+});
+
+// Video loop control (se necessario)
 document.addEventListener("DOMContentLoaded", () => {
     const videos = document.querySelectorAll(".video-vert");
-
     videos.forEach(video => {
-
         video.addEventListener("loadedmetadata", () => {
-
-         
             video.addEventListener("timeupdate", () => {
-
-                if (video.currentTime >= stopTime) {
-                    video.currentTime = 0;   // torna all’inizio
-                    video.play();            // riparte subito
-                }
-
+                // Puoi aggiungere logica custom per il loop se necessario
             });
-
         });
+    });
+});
 
+// Apri pop-up
+document.getElementById("openFormBtn").addEventListener("click", function(){
+    document.getElementById("popupForm").style.display = "flex";
+});
+
+// Chiudi pop-up
+document.getElementById("closeFormBtn").addEventListener("click", function(){
+    document.getElementById("popupForm").style.display = "none";
+});
+
+// Chiudi cliccando fuori dal pop-up
+window.addEventListener("click", function(e){
+    if(e.target == document.getElementById("popupForm")){
+        document.getElementById("popupForm").style.display = "none";
+    }
+});
+
+// Invia form via email (funziona con backend o servizi come EmailJS)
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("Messaggio inviato!"); // Qui puoi aggiungere integrazione reale
+    document.getElementById("popupForm").style.display = "none";
+});
+
+const circle = document.getElementById('circleCheckbox');
+circle.addEventListener('click', () => {
+    circle.classList.add('active');
+});
+
+// ============================================
+// MENU HAMBURGER
+// ============================================
+document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    
+    if (hamburger) {
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            hamburger.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    if (closeMenu) {
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     });
 });
 
 
-<!-- TREDICESIMA FASCIA -->
-<section class="tredicesima-fascia">
-    <div class="center-img-wrapper">
-        alt="img23" class="center-img">
-    </div>
-</section>
 
 
 
 
 
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 </html>
