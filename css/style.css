@@ -510,7 +510,7 @@ body {
 @media (max-width: 480px) {
     .quarta-fascia .rettangolo .immagine-rettangolo img {
         max-width: 60%; /* ancora più piccole */
-       
+        transform: translateX(-20px);/* sposta a sinistra di 20px */
     }
 }
 
