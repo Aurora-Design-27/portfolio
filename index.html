@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -9,25 +10,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Dirt&family=Archivo+Black&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/bootstrap-grid.css">
     <link rel="stylesheet" href="css/style.css">
-    
 </head>
 <body>
 
 <!-- HERO SECTION -->
 <section class="hero">
-    <!-- HEADER / NAVIGATION -->
     <div class="header-top">
-        <!-- Logo/Greeting -->
         <span class="hero-left">Hello, nice to meet you!</span>
         
-        <!-- MENU DESKTOP - Visibile solo su ≥992px -->
         <nav class="desktop-nav">
             <a href="#creazioni">creazioni</a>
             <a href="#chisono">chisono</a>
             <a href="#contatti">contatti</a>
         </nav>
         
-        <!-- HAMBURGER BUTTON - Visibile solo su <992px -->
         <button class="hamburger" id="hamburger" aria-label="Menu">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
@@ -35,7 +31,6 @@
         </button>
     </div>
     
-    <!-- MENU MOBILE OVERLAY -->
     <nav class="mobile-menu" id="mobileMenu">
         <button class="close-menu" id="closeMenu" aria-label="Chiudi menu">
             <span>&times;</span>
@@ -47,7 +42,6 @@
         </ul>
     </nav>
 
-    <!-- Hero Content -->
     <div class="container-fluid">
         <div class="row h-100 align-items-center">
             <div class="col-12 col-lg-4 offset-lg-7">
@@ -60,7 +54,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- SECONDA FASCIA -->
 <section class="seconda-fascia">
@@ -79,6 +72,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- TERZA FASCIA - ABOUT ME -->
 <section class="terza-fascia" id="chisono">
@@ -107,7 +101,6 @@
 <section class="quarta-fascia">
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <!-- Rettangolo 1 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="rettangolo">
                     <div class="immagine-rettangolo">
@@ -119,7 +112,6 @@
                 </div>
             </div>
 
-            <!-- Rettangolo 2 -->
             <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                 <div class="rettangolo">
                     <div class="immagine-rettangolo">
@@ -130,7 +122,6 @@
                 </div>
             </div>
 
-            <!-- Rettangolo 3 -->
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="rettangolo">
                     <div class="immagine-rettangolo">
@@ -144,270 +135,318 @@
     </div>
 </section>
 
-<!-- QUINTA FASCIA - CAPPELLANDO -->
-<section class="quinta-fascia" id="creazioni">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6 order-2 order-lg-1">
-                <div class="testo-fascia">
-                    <p class="fascia-small">alcuni miei lavori...</p>
-                    <h2 class="fascia-title">Cappellando <br> con Reinhard</h2>
-                    <p class="fascia-description">
-                        Progettare e realizzare un <br> cappello artigianale insieme <br> a un esperto del settore 
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6 order-1 order-lg-2">
-                <div class="immagine-fascia">
-                    <div class="parallax-box" data-parallax>
-                        <img src="img/deb.png" class="parallax-img">
-                    </div>
-                </div>
-            </div>
+<!-- ============================================
+     SEZIONE CATEGORIE PROGETTI
+     ============================================ -->
+<section id="creazioni">
+
+<!-- CATEGORIA ARTE -->
+<div class="category-section">
+    <button class="category-header" onclick="toggleCategory('arte')" id="arte-header">
+        <div class="category-left">
+            <img src="img/pennello 1_rosa.png" alt="Arte" class="category-icon">
+            <h2 class="category-title">ARTE</h2>
         </div>
-    </div>
-</section>
-
-<!-- SESTA FASCIA - IBRIDO77 -->
-<section class="sesta-fascia">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
-                <div class="immagine-fascia-sx">
-                    <img src="img/img4.png" alt="img4" class="img-hover-effect">
-                </div>
-            </div>
-            <div class="col-12 col-lg-5 offset-lg-1">
-                <div class="testo-fascia-dx">
-                    <p class="fascia-small">nuovo progetto...</p>
-                    <h2 class="fascia-title">IBRIDO77</h2>
-                    <p class="fascia-description">
-                        Un programma in collaborazione con il comune di Rimini per la costruzione 
-                        di un'identità visiva di un ex cinema di quartiere per renderlo HUB sociale.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="fascia6-gallery">
-    <div class="container-gallery gallery">
-        <!-- Cerchio con 4 quadratini interni -->
-        <div class="circle-checkbox" id="circleCheckbox">
-            <div class="inner-squares">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-
-        <img src="img/Rectangle 28.png" alt="img1">
-        <img src="img/Rectangle 24.png" alt="img2">
-        <img src="img/Rectangle 25.png" alt="img3">
-        <img src="img/Rectangle 23.png" alt="img4">
-        <img src="img/Rectangle 21.png" alt="img5">
-        <img src="img/Rectangle 26.png" alt="img6">
-    </div>
-</section>
-
-
-
-<!-- SETTIMA FASCIA - COPERTINA ALBUM -->
-<section class="settima-fascia">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
-                <div class="testo-fascia">
-                    <p class="fascia-small">nuovo progetto...</p>
-                    <h2 class="fascia-title">Copertina Album Musicale</h2>
-                    <p class="fascia-description">
-                        Realizzazione della copertina di un album <br> musicale, scattata foto 
-                        poi modificata <br> in postproduzione e aggiunta di titolo e informazioni varie.
-                    </p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <div class="immagine-fascia">
-                    <div class="card-container">
-                        <div class="card-front">
-                            <img src="img/img5.png" alt="Album cover front">
+        <svg class="category-arrow" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </button>
+    
+    <div class="category-content" id="arte-content">
+        <!-- OTTAVA FASCIA - OPERE D'ARTE -->
+        <section class="ottava-fascia">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="box-arte">
+                            <img class="box-img" src="img/img6.png" alt="tempera">
+                            <h3 class="box-title">Tempera</h3>
+                            <p class="box-desc">Upupa realizzata con tempera</p>
                         </div>
-                        <div class="card-back">
-                            <img src="img/img24 2.png" alt="Album cover back">
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                        <div class="box-arte">
+                            <img class="box-img" src="img/img7.png" alt="acquerello">
+                            <h3 class="box-title">Ritratto ad acquerello</h3>
+                            <p class="box-desc">Ritratto realistico realizzato con acquerelli</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="box-arte">
+                            <img class="box-img" src="img/img8.png" alt="anatomia">
+                            <h3 class="box-title">Anatomia umana</h3>
+                            <p class="box-desc">Realizzazione di un cranio attraverso matite</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
-</section>
+</div>
 
-<!-- OTTAVA FASCIA - OPERE D'ARTE -->
-<section class="ottava-fascia">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <!-- BOX 1 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="box-arte">
-                    <img class="box-img" src="img/img6.png" alt="tempera">
-                    <h3 class="box-title">Tempera</h3>
-                    <p class="box-desc">Upupa realizzata con tempera</p>
+<!-- CATEGORIA DESIGN -->
+<div class="category-section">
+    <button class="category-header" onclick="toggleCategory('design')" id="design-header">
+        <div class="category-left">
+            <img src="img/lettera_rosa.png" alt="Design" class="category-icon">
+            <h2 class="category-title">DESIGN</h2>
+        </div>
+        <svg class="category-arrow" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </button>
+    
+    <div class="category-content" id="design-content">
+        
+        <!-- QUINTA FASCIA - CAPPELLANDO -->
+        <section class="quinta-fascia">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6 order-2 order-lg-1">
+                        <div class="testo-fascia">
+                            <p class="fascia-small">alcuni miei lavori...</p>
+                            <h2 class="fascia-title">Cappellando <br> con Reinhard</h2>
+                            <p class="fascia-description">
+                                Progettare e realizzare un <br> cappello artigianale insieme <br> a un esperto del settore 
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 order-1 order-lg-2">
+                        <div class="immagine-fascia">
+                            <div class="parallax-box" data-parallax>
+                                <img src="img/deb.png" class="parallax-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SESTA FASCIA - IBRIDO77 -->
+        <section class="sesta-fascia">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="immagine-fascia-sx">
+                            <img src="img/img4.png" alt="img4" class="img-hover-effect">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5 offset-lg-1">
+                        <div class="testo-fascia-dx">
+                            <p class="fascia-small">nuovo progetto...</p>
+                            <h2 class="fascia-title">IBRIDO77</h2>
+                            <p class="fascia-description">
+                                Un programma in collaborazione con il comune di Rimini per la costruzione 
+                                di un'identità visiva di un ex cinema di quartiere per renderlo HUB sociale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FASCIA GALLERY IBRIDO77 -->
+        <section class="fascia6-gallery">
+            <div class="container-gallery gallery">
+                <div class="circle-checkbox" id="circleCheckbox">
+                    <div class="inner-squares">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+
+                <img src="img/Rectangle 28.png" alt="img1">
+                <img src="img/Rectangle 24.png" alt="img2">
+                <img src="img/Rectangle 25.png" alt="img3">
+                <img src="img/Rectangle 23.png" alt="img4">
+                <img src="img/Rectangle 21.png" alt="img5">
+                <img src="img/Rectangle 26.png" alt="img6">
+            </div>
+        </section>
+
+        <!-- SETTIMA FASCIA - COPERTINA ALBUM -->
+        <section class="settima-fascia">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="testo-fascia">
+                            <p class="fascia-small">nuovo progetto...</p>
+                            <h2 class="fascia-title">Copertina Album Musicale</h2>
+                            <p class="fascia-description">
+                                Realizzazione della copertina di un album <br> musicale, scattata foto 
+                                poi modificata <br> in postproduzione e aggiunta di titolo e informazioni varie.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="immagine-fascia">
+                            <div class="card-container">
+                                <div class="card-front">
+                                    <img src="img/img5.png" alt="Album cover front">
+                                </div>
+                                <div class="card-back">
+                                    <img src="img/img24 2.png" alt="Album cover back">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NONA FASCIA - MAGLIETTE -->
+        <section class="nona-fascia">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col-12 col-lg-6">
+                        <div class="immagine-fascia-sx">
+                            <img src="img/img9.png" alt="Creazione Magliette" class="img-hover-effect">
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-lg-5 offset-lg-1">
+                        <div class="testo-fascia-dx">
+                            <p class="fascia-small">Lavoro Personale</p>
+                            <h2 class="fascia-title">Creazione <br>Magliette</h2>
+                            <p class="fascia-description">magliette personalizzate Jesus.<br> Un lavoro autonomo che mi ha  permesso di sperimentare e scoprire la passione per la grafica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<!-- CATEGORIA FOTOGRAFIA -->
+<div class="category-section">
+    <button class="category-header" onclick="toggleCategory('fotografia')" id="fotografia-header">
+        <div class="category-left">
+            <img src="img/fotografia_rosa.png" alt="Fotografia" class="category-icon">
+            <h2 class="category-title">FOTOGRAFIA</h2>
+        </div>
+        <svg class="category-arrow" viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </button>
+    
+    <div class="category-content" id="fotografia-content">
+        
+        <!-- DECIMA FASCIA - INTRO FOTOGRAFIA -->
+        <section class="decima-fascia">
+            <div class="contenuto-decima">
+                <p class="decima-small">Fotografa per Eventi</p>
+                <h2 class="decima-title">Alcuni miei recenti scatti</h2>
+            </div>
+        </section>
+
+        <!-- UNDICESIMA FASCIA - DOPPIO CAROUSEL -->
+        <section class="undicesima-fascia">
+            <div class="carousel-row row-top">
+                <div class="carousel-track">
+                    <img src="img/img10.png" alt="">
+                    <img src="img/img11.png" alt="">
+                    <img src="img/img12.png" alt="">
+                    <img src="img/img13.png" alt="">
+                    <img src="img/img14.png" alt="">
+                    <img src="img/img15.png" alt="">
+                    <img src="img/img10.png" alt="">
+                    <img src="img/img11.png" alt="">
+                    <img src="img/img12.png" alt="">
+                    <img src="img/img13.png" alt="">
+                    <img src="img/img14.png" alt="">
+                    <img src="img/img15.png" alt="">
                 </div>
             </div>
 
-            <!-- BOX 2 -->
-            <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                <div class="box-arte">
-                    <img class="box-img" src="img/img7.png" alt="acquerello">
-                    <h3 class="box-title">Ritratto ad acquerello</h3>
-                    <p class="box-desc">Ritratto realistico realizzato con acquerelli</p>
+            <div class="carousel-row row-bottom">
+                <div class="carousel-track">
+                    <img src="img/img16.png" alt="">
+                    <img src="img/img17.png" alt="">
+                    <img src="img/img18.png" alt="">
+                    <img src="img/img19.png" alt="">
+                    <img src="img/img20.png" alt="">
+                    <img src="img/img21.png" alt="">
+                    <img src="img/img16.png" alt="">
+                    <img src="img/img17.png" alt="">
+                    <img src="img/img18.png" alt="">
+                    <img src="img/img19.png" alt="">
+                    <img src="img/img20.png" alt="">
+                    <img src="img/img21.png" alt="">
                 </div>
             </div>
+        </section>
 
-            <!-- BOX 3 -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="box-arte">
-                    <img class="box-img" src="img/img8.png" alt="anatomia">
-                    <h3 class="box-title">Anatomia umana</h3>
-                    <p class="box-desc">Realizzazione di un cranio attraverso matite</p>
+        <!-- DODICESIMA FASCIA - VIDEO -->
+        <section class="dodicesima-fascia">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8 testo-centrale">
+                        <p class="fascia-small">VIDEOMAKING</p>
+                        <h2 class="fascia-title">Video e Montaggi</h2>
+                        <p class="fascia-description">
+                            Mi occupo non solo di fotografia ma anche di riprese 
+                            video e montaggio. <br> Ecco alcuni miei recenti lavori.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center video-row">
+                    <div class="col-12 col-lg-6">
+                        <div class="video-colonna">
+                            <video src="video/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
+                            <video src="video/Raduno.mp4" class="video-vert" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
     </div>
+</div>
+
 </section>
-
-<!-- NONA FASCIA - MAGLIETTE -->
-<section class="nona-fascia">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-12 col-lg-6">
-                <div class="testo-fascia">
-                    <p class="fascia-small">Lavoro Personale</p>
-                    <h2 class="fascia-title">Creazione <br>Magliette</h2>
-                    <p class="fascia-description"> magliette personalizzate Jesus.<br> Un lavoro autonomo che mi ha <br> permesso di sperimentare e scoprire la passione per la grafica</p>
-                </div>
-            </div>
-            <div class="col-12 col-lg-6">
-                <div class="immagine-fascia">
-                    <img src="img/img9.png" alt="Creazione Magliette" class="img-hover-effect">
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- DECIMA FASCIA - INTRO FOTOGRAFIA -->
-<section class="decima-fascia">
-    <div class="contenuto-decima">
-        <p class="decima-small">Fotografa per Eventi</p>
-        <h2 class="decima-title">Alcuni miei recenti scatti</h2>
-    </div>
-</section>
-
-<!-- UNDICESIMA FASCIA - DOPPIO CAROUSEL -->
-<section class="undicesima-fascia">
-    <!-- Riga superiore (img10 → img15) -->
-    <div class="carousel-row row-top">
-        <div class="carousel-track">
-            <img src="img/img10.png" alt="">
-            <img src="img/img11.png" alt="">
-            <img src="img/img12.png" alt="">
-            <img src="img/img13.png" alt="">
-            <img src="img/img14.png" alt="">
-            <img src="img/img15.png" alt="">
-            <!-- DUPLICATE -->
-            <img src="img/img10.png" alt="">
-            <img src="img/img11.png" alt="">
-            <img src="img/img12.png" alt="">
-            <img src="img/img13.png" alt="">
-            <img src="img/img14.png" alt="">
-            <img src="img/img15.png" alt="">
-        </div>
-    </div>
-
-    <!-- Riga inferiore (img16 → img21) -->
-    <div class="carousel-row row-bottom">
-        <div class="carousel-track">
-            <img src="img/img16.png" alt="">
-            <img src="img/img17.png" alt="">
-            <img src="img/img18.png" alt="">
-            <img src="img/img19.png" alt="">
-            <img src="img/img20.png" alt="">
-            <img src="img/img21.png" alt="">
-            <!-- DUPLICATE -->
-            <img src="img/img16.png" alt="">
-            <img src="img/img17.png" alt="">
-            <img src="img/img18.png" alt="">
-            <img src="img/img19.png" alt="">
-            <img src="img/img20.png" alt="">
-            <img src="img/img21.png" alt="">
-        </div>
-    </div>
-</section>
-
-<!-- DODICESIMA FASCIA - VIDEO -->
-<section class="dodicesima-fascia">
-    <div class="container-fluid">
-        <!-- Testo centrale sopra i video -->
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-8 testo-centrale">
-                <p class="fascia-small">VIDEOMAKING</p>
-                <h2 class="fascia-title">Video e Montaggi</h2>
-                <p class="fascia-description">
-                    Mi occupo non solo di fotografia ma anche di riprese 
-                    video e montaggio. <br> Ecco alcuni miei recenti lavori.
-                </p>
-            </div>
-        </div>
-
-        <!-- Video -->
-        <div class="row justify-content-center video-row">
-            <div class="col-12 col-lg-6">
-                <div class="video-colonna">
-                    <video src="video/LookUp.MOV" class="video-vert" autoplay muted loop playsinline></video>
-                    <video src="video/Raduno.mp4" class="video-vert" autoplay muted loop playsinline></video>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+<!-- FINE SEZIONE CATEGORIE -->
 
 <!-- TREDICESIMA FASCIA -->
 <section class="tredicesima-fascia" id="contatti">
     <div class="container-fluid">
         <div class="row justify-content-center align-items-center text-center">
             <div class="col-12 col-lg-8">
-                <!-- Titolo grande -->
-                <h2 class="tredicesima-title">the end...ora maybe just the beginning</h2>
+                <h2 class="tredicesima-title">the end...or maybe just the beginning</h2>
                 
-                <!-- Testo piccolo sotto titolo -->
                 <p class="tredicesima-subtitle">
                     ora che mi conosci se ti va possiamo collaborare per qualche fantastico nuovo progetto assieme, clicca qui per contattarmi
                 </p>
                 
-                <!-- Pulsante -->
                 <button class="contact-btn" id="openFormBtn">Contact me</button>
             </div>
         </div>
     </div>
 </section>
 
-
-    <!-- Pop-up form -->
-    <div class="popup-form" id="popupForm">
-        <div class="popup-content">
-            <span class="close-btn" id="closeFormBtn">&times;</span>
-            <h3>Chat with me</h3>
-            <form id="contactForm">
-                <textarea placeholder="Scrivi il tuo messaggio..." required></textarea>
-                <button type="submit">Invia</button>
-            </form>
-        </div>
+<!-- Pop-up form -->
+<div class="popup-form" id="popupForm">
+    <div class="popup-content">
+        <span class="close-btn" id="closeFormBtn">&times;</span>
+        <h3>Chat with me</h3>
+        <form id="contactForm">
+            <textarea placeholder="Scrivi il tuo messaggio..." required></textarea>
+            <button type="submit">Invia</button>
+        </form>
     </div>
-</section>
+</div>
+
+<button id="backToTop" aria-label="Torna su">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 14L12 8L18 14" stroke="#FE4967" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
 
 
 <!-- SCRIPTS -->
@@ -457,18 +496,6 @@ window.addEventListener("scroll", function () {
     });
 });
 
-// Video loop control (se necessario)
-document.addEventListener("DOMContentLoaded", () => {
-    const videos = document.querySelectorAll(".video-vert");
-    videos.forEach(video => {
-        video.addEventListener("loadedmetadata", () => {
-            video.addEventListener("timeupdate", () => {
-                // Puoi aggiungere logica custom per il loop se necessario
-            });
-        });
-    });
-});
-
 // Apri pop-up
 document.getElementById("openFormBtn").addEventListener("click", function(){
     document.getElementById("popupForm").style.display = "flex";
@@ -479,28 +506,29 @@ document.getElementById("closeFormBtn").addEventListener("click", function(){
     document.getElementById("popupForm").style.display = "none";
 });
 
-// Chiudi cliccando fuori dal pop-up
+// Chiudi cliccando fuori
 window.addEventListener("click", function(e){
     if(e.target == document.getElementById("popupForm")){
         document.getElementById("popupForm").style.display = "none";
     }
 });
 
-// Invia form via email (funziona con backend o servizi come EmailJS)
+// Invia form
 document.getElementById("contactForm").addEventListener("submit", function(e){
     e.preventDefault();
-    alert("Messaggio inviato!"); // Qui puoi aggiungere integrazione reale
+    alert("Messaggio inviato!");
     document.getElementById("popupForm").style.display = "none";
 });
 
+// Circle checkbox gallery
 const circle = document.getElementById('circleCheckbox');
-circle.addEventListener('click', () => {
-    circle.classList.add('active');
-});
+if (circle) {
+    circle.addEventListener('click', () => {
+        circle.classList.add('active');
+    });
+}
 
-// ============================================
-// MENU HAMBURGER
-// ============================================
+// Menu hamburger
 document.addEventListener("DOMContentLoaded", () => {
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
@@ -540,8 +568,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Fade-in immagini scrapbook
 const fadeEls = document.querySelectorAll('.fade-in');
-
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -552,30 +580,67 @@ const observer = new IntersectionObserver((entries) => {
 
 fadeEls.forEach(el => observer.observe(el));
 
+// Effetto flip carta allo scroll
+const cardContainer = document.querySelector('.card-container');
+const settimaFascia = document.querySelector('.settima-fascia');
 
-
-
-    // Effetto flip carta allo scroll
-    const cardContainer = document.querySelector('.card-container');
-    const settimaFascia = document.querySelector('.settima-fascia');
-
-    window.addEventListener('scroll', () => {
-        if (cardContainer && settimaFascia) {
-            const fasciaTop = settimaFascia.offsetTop;
-            const fasciaHeight = settimaFascia.offsetHeight;
-            const scrollPos = window.scrollY + window.innerHeight / 2;
-            
-            // Calcola la posizione relativa dello scroll nella fascia
-            const relativeScroll = (scrollPos - fasciaTop) / fasciaHeight;
-            
-            // Flip quando si è a metà della fascia
-            if (relativeScroll > 0.5 && relativeScroll < 1.2) {
-                cardContainer.classList.add('flipped');
-            } else {
-                cardContainer.classList.remove('flipped');
-            }
+window.addEventListener('scroll', () => {
+    if (cardContainer && settimaFascia) {
+        const fasciaTop = settimaFascia.offsetTop;
+        const fasciaHeight = settimaFascia.offsetHeight;
+        const scrollPos = window.scrollY + window.innerHeight / 2;
+        
+        const relativeScroll = (scrollPos - fasciaTop) / fasciaHeight;
+        
+        if (relativeScroll > 0.5 && relativeScroll < 1.2) {
+            cardContainer.classList.add('flipped');
+        } else {
+            cardContainer.classList.remove('flipped');
         }
-    });
+    }
+});
+
+// Gallery expand
+document.addEventListener('DOMContentLoaded', function() {
+    const circleCheckbox = document.getElementById('circleCheckbox');
+    const gallery = document.querySelector('.container-gallery');
+    const section = document.querySelector('.fascia6-gallery');
+    
+    if (circleCheckbox) {
+        circleCheckbox.addEventListener('click', function() {
+            this.classList.add('active');
+            if (gallery) gallery.classList.add('expanded');
+            if (section) section.classList.add('expanded');
+        });
+    }
+});
+
+// TOGGLE CATEGORIE - NUOVO
+function toggleCategory(category) {
+    const content = document.getElementById(category + '-content');
+    const header = document.getElementById(category + '-header');
+    
+    header.classList.toggle('active');
+    content.classList.toggle('active');
+}
+
+
+
+  const btn = document.getElementById('backToTop');
+  const section2 = document.querySelector('.seconda-fascia');
+
+  window.addEventListener('scroll', () => {
+    const sectionBottom = section2.getBoundingClientRect().bottom;
+    if (sectionBottom < 0) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 
 

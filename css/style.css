@@ -668,7 +668,7 @@ body {
     gap: 20px;
     max-width: 1440px;
     margin: 0 auto;
-    justify-items: center; /* centra le immagini */
+    justify-items: center;
     position: relative;
 }
 
@@ -688,6 +688,7 @@ body {
     cursor: pointer;
     z-index: 10;
     transition: opacity 0.5s, transform 0.5s;
+    animation: pulse 2s infinite;
 }
 
 .inner-squares {
@@ -705,6 +706,25 @@ body {
     border-radius: 2px;
 }
 
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(254, 73, 103, 0.7);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 0 0 15px rgba(254, 73, 103, 0);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 0 0 rgba(254, 73, 103, 0);
+    }
+}
+
+.circle-checkbox:hover {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1.15);
+}
 /* Animazione pop-in immagini */
 .circle-checkbox.active ~ img {
     transform: scale(1);
@@ -717,6 +737,7 @@ body {
     opacity: 0;
     transform: translate(-50%, -50%) scale(0);
     pointer-events: none;
+    animation: none;
 }
 
 /* Immagini iniziali piccole e scure */
@@ -743,54 +764,51 @@ body {
     box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
 }
 
-/* Responsive */
 /* MOBILE & TABLET - fino a 768px */
 @media (max-width: 768px) {
-
     .fascia6-gallery {
         padding: 20px 10px;
     }
-
+    
     .container-gallery {
         display: grid;
-        grid-template-columns: repeat(2, 1fr); /* forza due colonne */
+        grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         max-width: 100%;
         margin: 0 auto;
         justify-items: center;
         position: relative;
+        min-height: 100px; /* Solo per il bottone */
     }
-
+    
+    /* NASCONDE COMPLETAMENTE le immagini su mobile finché non si clicca */
     .container-gallery img {
-        width: 100%;       /* prende tutta la larghezza della cella */
-        height: auto;      /* mantiene proporzioni */
-        aspect-ratio: 1;   /* mantiene il quadrato */
+        display: none; /* CHIAVE: nasconde completamente */
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
         object-fit: cover;
         border-radius: 10px;
     }
-
+    
+    /* Mostra le immagini quando il cerchio è attivo */
+    .circle-checkbox.active ~ img {
+        display: block; /* CHIAVE: mostra le immagini */
+    }
+    
     .circle-checkbox {
-        width: 45px;
-        height: 45px;
+        width: 50px;
+        height: 50px;
         top: 50%;
         left: 50%;
     }
-
+    
     .inner-squares {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         gap: 3px;
     }
-
-    .img-hover-effect:hover {
-        transform: scale(1.05);
-        box-shadow: 0 15px 35px rgba(254, 73, 103, 0.4);
-    }
 }
-
-
-
-
 /* ============================================
    SETTIMA FASCIA - COPERTINA ALBUM
    ============================================ */
@@ -917,44 +935,58 @@ body {
 .nona-fascia {
     width: 100%;
     min-height: 550px;
-    background-color: #000000;
+    background-color: #000; /* o il colore che vuoi */
     padding: 60px 40px;
     display: flex;
     align-items: center;
 }
 
-.nona-fascia .immagine-fascia {
+.nona-fascia .immagine-fascia-sx {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 20px; 
+    padding: 20px;
 }
 
-.nona-fascia .immagine-fascia img {
+.nona-fascia .immagine-fascia-sx img {
     width: 100%;
-    max-width: 600px; 
+    max-width: 600px;
     height: auto;
-    border-radius: 15px; 
+    border-radius: 15px;
 }
 
-/* Responsive */
+.nona-fascia .testo-fascia-dx {
+    padding: 30px;
+}
+
+.nona-fascia .fascia-small {
+    color: #999;
+}
+
+.nona-fascia .fascia-title {
+    color: #FE4967;
+}
+
+.nona-fascia .fascia-description {
+    color: #fff;
+}
+
+/* Mobile */
 @media (max-width: 768px) {
     .nona-fascia .fascia-title {
         font-size: 40px;
     }
-
     .nona-fascia .fascia-description {
         font-size: 15px;
     }
 }
-
 
 /* ============================================
    DECIMA FASCIA - INTRO FOTOGRAFIA
    ============================================ */
 .decima-fascia {
     width: 100%;
-    height: 390px;
+    height: 300px;
     background-color: black;
     display: flex;
     justify-content: center;
@@ -1337,6 +1369,141 @@ body {
 }
 
 
+.category-section {
+    width: 100%;
+    background-color: #000;
+    border-bottom: 3px solid #FE4967;
+}
+
+.category-header {
+    width: 100%;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background: transparent;
+    border: none;
+}
+
+.category-header:hover {
+    background-color: rgba(254, 73, 103, 0.1);
+}
+
+.category-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.category-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.category-header:hover .category-icon {
+    transform: scale(1.1);
+}
+
+.category-title {
+    font-family: 'Rubik Dirt', cursive;
+    font-size: 64px;
+    color: white;
+    margin: 0;
+}
+
+.category-arrow {
+    width: 80px;
+    height: 80px;
+    stroke: #FE4967;
+    stroke-width: 3;
+    transition: transform 0.3s ease;
+    fill: none;
+}
+
+.category-header.active .category-arrow {
+    transform: rotate(180deg);
+}
+
+.category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.category-content.active {
+    max-height: 15000px;
+}
+
+@media (max-width: 768px) {
+    .category-header {
+        padding: 30px 20px;
+    }
+    .category-title {
+        font-size: 40px;
+    }
+    .category-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .category-arrow {
+        width: 50px;
+        height: 50px;
+    }
+    .category-left {
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-title {
+        font-size: 32px;
+    }
+    .category-icon {
+        width: 100px;
+        height: 100px;
+    }
+    .category-arrow {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+#backToTop {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: #ffffff;      /* sfondo bianco */
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+  z-index: 1000;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+#backToTop:hover {
+  transform: translateY(-3px);
+}
 
 /* ============================================
    MEDIA QUERIES - RESPONSIVE
@@ -1630,3 +1797,4 @@ body {
     
    
 }
+
