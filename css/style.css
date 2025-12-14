@@ -234,7 +234,7 @@ body {
     text-align: left;
     color: #fff;
     padding: 20px;
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
 /* VERSIONE MOBILE */
@@ -498,7 +498,7 @@ body {
 /* MOBILE - 768px e inferiore */
 @media (max-width: 768px) {
     .immagine-rettangolo img:first-child {
-        left: 50% !important; /* SPOSTA A SINISTRA */
+        left: 60% !important; /* SPOSTA A SINISTRA */
         top: 20%;
         transform: rotate(20deg);
         max-width: 180px;
@@ -507,7 +507,7 @@ body {
     .immagine-rettangolo img:nth-child(2) {
         left: 55% !important; /* SPOSTA A SINISTRA */
         top: 30%;
-        transform: rotate(5deg) scale(1.2);
+        transform: rotate(8deg) scale(1.2);
         max-width: 150px;
     }
 }
@@ -1463,8 +1463,8 @@ body {
         font-size: 32px;
     }
     .category-icon {
-        width: 100px;
-        height: 100px;
+        width: 60px;
+        height: 40px;
     }
     .category-arrow {
         width: 40px;
@@ -1503,6 +1503,75 @@ body {
 
 #backToTop:hover {
   transform: translateY(-3px);
+}
+
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: #FE4967;
+    font-family: 'Archivo Black', sans-serif;
+    padding: 25px 20px 20px;
+    text-align: center;
+}
+
+.footer-contacts {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.footer-contacts a {
+    color: #FE4967;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.3s ease;
+}
+
+.footer-contacts a:hover {
+    opacity: 0.7;
+}
+
+.divider {
+    color: #FE4967;
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.footer-copyright {
+    font-size: 10px;
+    opacity: 0.8;
+    margin-top: 10px;
+}
+
+/* Responsive per mobile */
+@media (max-width: 767px) {
+    .footer-contacts {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .divider {
+        display: none;
+    }
+}
+
+/* Responsive per tablet e desktop */
+@media (min-width: 768px) {
+    .footer-contacts a {
+        font-size: 16px;
+    }
+    
+    .divider {
+        font-size: 16px;
+    }
+
+    .footer-copyright {
+        font-size: 11px;
+    }
 }
 
 /* ============================================
@@ -1626,7 +1695,7 @@ body {
     }
     
     .hero-text .subtitle {
-        font-size: 20px;
+        font-size: 17px;
     }
     
     .hero-text .title {
@@ -1775,7 +1844,7 @@ body {
     }
     
     .hero-text .title {
-        font-size: 28px;
+        font-size: 32px;
     }
     
     .seconda-titolo {
